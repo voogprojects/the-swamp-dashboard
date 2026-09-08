@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A practical implementation guide for connecting real campaign data to The Swamp." />
+    <title>Implementation Guide — The Swamp</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="modern.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to implementation guide</a>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <a class="brand" href="index.html" aria-label="The Swamp home"><svg class="brand-mark" aria-hidden="true" viewBox="0 0 32 28"><path class="reed" d="M9 20V8m10 12V5m7 15v-9"/><rect class="cattail" x="7" y="3" width="4" height="7" rx="2"/><rect class="cattail" x="17" y="0" width="4" height="7" rx="2"/><rect class="cattail" x="24" y="7" width="4" height="6" rx="2"/><path class="water" d="M2 21c4-2 8-2 12 0s8 2 16 0M5 25c3-1.5 6-1.5 9 0s6 1.5 13 0"/></svg><span>The Swamp</span></a>
+        <nav>
+          <p class="nav-label">Workspace</p>
+          <a class="nav-item" href="index.html"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 17V7m5 13V4m5 13V7m5 13V4" /></svg>Dashboard</a>
+          <a class="nav-item" href="signal-library.html"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h3l2-6 4 12 2-6h5" /></svg>Decision Queue<span class="nav-count">3</span></a>
+          <a class="nav-item" href="audiences.html"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.5-3.4 2.3-5 5.5-5s5 1.6 5.5 5M16 5.5a3 3 0 0 1 0 5.8M16 14c2.8.2 4.3 1.9 4.6 5"/></svg>Audiences</a>
+          <a class="nav-item" href="shared-briefs.html"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h5" /></svg>Shared Briefs</a>
+          <p class="nav-label nav-label--second">System</p>
+          <a class="nav-item" href="index.html"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 7c0-2 3.1-3 7-3s7 1 7 3-3.1 3-7 3-7-1-7-3Zm0 0v5c0 2 3.1 3 7 3s7-1 7-3V7M5 12v5c0 2 3.1 3 7 3s7-1 7-3v-5" /></svg>Data sources<span class="status-dot" aria-label="Mock sources healthy"></span></a>
+          <a class="nav-item is-active" href="implementation-guide.html" aria-current="page"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h7M4 12h10M4 18h7M17 4v16M14 7l3-3 3 3"/></svg>Implementation guide</a>
+          <a class="nav-item" href="index.html#playbook"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5.5C7.5 4 9.8 4.5 12 7v13c-2.2-2.5-4.5-3-8-1.5zM20 5.5C16.5 4 14.2 4.5 12 7v13c2.2-2.5 4.5-3 8-1.5z"/></svg>Team playbook</a>
+        </nav>
+        <div class="sidebar-footer"><div class="avatar" aria-hidden="true">MH</div><div><strong>Group 1:A</strong><span>Universal Records</span></div><button class="icon-button" type="button" aria-label="Open account menu">•••</button></div>
+      </aside>
+
+      <header class="mobile-header"><a class="brand" href="index.html" aria-label="The Swamp home"><svg class="brand-mark" aria-hidden="true" viewBox="0 0 32 28"><path class="reed" d="M9 20V8m10 12V5m7 15v-9"/><rect class="cattail" x="7" y="3" width="4" height="7" rx="2"/><rect class="cattail" x="17" y="0" width="4" height="7" rx="2"/><rect class="cattail" x="24" y="7" width="4" height="6" rx="2"/><path class="water" d="M2 21c4-2 8-2 12 0s8 2 16 0M5 25c3-1.5 6-1.5 9 0s6 1.5 13 0"/></svg><span>The Swamp</span></a><button class="menu-button" id="menu-button" type="button" aria-controls="mobile-menu" aria-expanded="false"><span class="sr-only">Open navigation</span><i></i><i></i></button></header>
+
+      <main class="workspace-main" id="main">
+        <div class="workspace-topbar"><div class="workspace-context"><div class="workspace-context-mark" aria-hidden="true">↗</div><div><span class="eyebrow">System</span><strong>Implementation guide</strong></div></div><span class="freshness"><i></i> Frontend mock · no live credentials</span></div>
+        <div class="workspace-page">
+          <header class="workspace-heading">
+            <div><p class="kicker">Technical handoff</p><h1>Backend integration guide</h1><p>Requirements for data collection, credentials, normalization, signal qualification, frontend loading, and error states.</p></div>
+            <div class="workspace-heading-actions"><a class="button button--quiet" href="signal-library.html">See decision queue</a><a class="button button--primary" href="index.html">Open the mock</a></div>
+          </header>
+
+          <section class="handoff-banner" aria-labelledby="handoff-title">
+            <div><span class="eyebrow eyebrow--light">Recommended pilot scope</span><h2 id="handoff-title">One artist · one campaign · three approved sources · 48-hour analysis</h2><p>Automate repeat-pattern detection and retain strategist review for interpretation and approval.</p></div>
+            <aside><span>Completion criteria</span><strong>A strategist can trace, approve, share, and measure one recommendation.</strong><small>This prototype contains mock data and no connected backend.</small></aside>
+          </section>
+
+          <section class="implementation-flow" aria-label="End-to-end implementation flow">
+            <div><span>01</span><strong>Collect</strong><small>Approved APIs + manual link intake</small></div>
+            <div><span>02</span><strong>Normalize</strong><small>One event and audience schema</small></div>
+            <div><span>03</span><strong>Detect</strong><small>24–48h recurrence + velocity</small></div>
+            <div><span>04</span><strong>Interpret</strong><small>Sentiment + top comments</small></div>
+            <div><span>05</span><strong>Review</strong><small>Strategist context + approval</small></div>
+            <div><span>06</span><strong>Share</strong><small>Live page or Google Doc</small></div>
+            <div><span>07</span><strong>Measure</strong><small>Compare result with baseline</small></div>
+          </section>
+
+          <div class="guide-layout">
+            <aside class="guide-toc"><span>On this page</span><nav aria-label="Implementation guide sections"><a href="#collect">Data requirements</a><a href="#credentials">API credentials</a><a href="#normalize">Data normalization</a><a href="#detect">Signal qualification</a><a href="#load">Frontend loading</a><a href="#states">Error states</a></nav></aside>
+
+            <div class="guide-content">
+              <section class="guide-section" id="collect" aria-labelledby="collect-title">
+                <div class="guide-section-heading"><span>01</span><div><h2 id="collect-title">Data sources and required fields</h2><p>Collect the fields currently used by the marketing team: social growth, country, age range, sentiment, top comments, and pattern frequency.</p></div></div>
+                <div class="source-matrix" role="table" aria-label="Suggested source integrations">
+                  <div class="source-matrix-row is-head" role="row"><span>Source</span><span>Access path</span><span>Useful inputs</span><span>Reference</span></div>
+                  <div class="source-matrix-row" role="row"><strong>TikTok</strong><span>Approved developer product, owned-account authorization, or licensed listening partner</span><span>Video and comment text, publish time, engagement, creator, permitted audience attributes</span><a href="https://developers.tiktok.com/docs/en/getting-started-create-an-app" target="_blank" rel="noopener">Official docs ↗</a></div>
+                  <div class="source-matrix-row" role="row"><strong>Instagram</strong><span>Meta app + authorized professional account</span><span>Reels and post performance, comments, audience and account insights where permissioned</span><a href="https://developers.facebook.com/docs/instagram-platform/" target="_blank" rel="noopener">Official docs ↗</a></div>
+                  <div class="source-matrix-row" role="row"><strong>YouTube</strong><span>Google project + OAuth for channel analytics</span><span>Views, comments, geography, age-group reporting, publish time</span><a href="https://developers.google.com/youtube/analytics" target="_blank" rel="noopener">Official docs ↗</a></div>
+                  <div class="source-matrix-row" role="row"><strong>Spotify</strong><span>Web API for public metadata; internal or licensed source for label performance data</span><span>Artist and release metadata; reconcile monthly listeners and stream totals with an authorized source</span><a href="https://developer.spotify.com/documentation/web-api" target="_blank" rel="noopener">Official docs ↗</a></div>
+                  <div class="source-matrix-row" role="row"><strong>Manual intake</strong><span>Existing sheet or lightweight submission form</span><span>Priority URLs, campaign mapping, strategist notes, known cultural context</span><span>Keep as fallback</span></div>
+                </div>
+                <div class="security-callout"><span>!</span><div><strong>Confirm access and usage rights before promising coverage.</strong><p>Broad public listening, demographics, comments, and streaming totals are not uniformly available through general developer APIs. Record the source and permission level for every field.</p></div></div>
+              </section>
+
+              <section class="guide-section" id="credentials" aria-labelledby="credentials-title">
+                <div class="guide-section-heading"><span>02</span><div><h2 id="credentials-title">Keep API keys on the server</h2><p>Create each platform app under an organization-owned account, request the minimum scopes, and exchange or refresh tokens in backend code. Never add secrets to this Vite frontend or commit them to the repository.</p></div></div>
+                <div class="code-panel" aria-label="Example server environment variables"><div class="code-panel-head"><span>.env.server · example names only</span><span>Do not prefix secrets with VITE_</span></div><pre><code><span class="token-key">TIKTOK_CLIENT_KEY</span>=<span class="token-value">replace_me</span>
+<span class="token-key">TIKTOK_CLIENT_SECRET</span>=<span class="token-value">replace_me</span>
+<span class="token-key">META_APP_ID</span>=<span class="token-value">replace_me</span>
+<span class="token-key">META_APP_SECRET</span>=<span class="token-value">replace_me</span>
+<span class="token-key">GOOGLE_CLIENT_ID</span>=<span class="token-value">replace_me</span>
+<span class="token-key">GOOGLE_CLIENT_SECRET</span>=<span class="token-value">replace_me</span>
+<span class="token-key">SPOTIFY_CLIENT_ID</span>=<span class="token-value">replace_me</span>
+<span class="token-key">SPOTIFY_CLIENT_SECRET</span>=<span class="token-value">replace_me</span></code></pre></div>
+                <div class="security-callout"><span>✓</span><div><strong>Production pattern</strong><p>Browser → your backend → platform API. Encrypt refresh tokens, rotate credentials, validate OAuth state, request least-privilege scopes, and log authorization failures without logging tokens.</p></div></div>
+              </section>
+
+              <section class="guide-section" id="normalize" aria-labelledby="normalize-title">
+                <div class="guide-section-heading"><span>03</span><div><h2 id="normalize-title">Data normalization</h2><p>Keep raw platform payloads for audit, then map them into one stable contract. Every insight should retain IDs, timestamps, provenance, geography, confidence, and whether the value is observed, inferred, or mocked.</p></div></div>
+                <div class="field-table" role="table" aria-label="Core data model">
+                  <div class="field-row is-head" role="row"><span>Object</span><span>Required fields</span><span>Purpose</span></div>
+                  <div class="field-row" role="row"><strong>Artist + campaign</strong><span>Stable IDs, name, genre, release, start/end, priority markets</span><span>Stops names and URLs from becoming database keys.</span></div>
+                  <div class="field-row" role="row"><strong>Metric point</strong><span>metric, value, unit, observed_at, source, geography</span><span>Supports honest historical charts and comparable growth.</span></div>
+                  <div class="field-row" role="row"><strong>Evidence item</strong><span>platform, source URL, text, author, published_at, engagement</span><span>Keeps every summary traceable to its receipts.</span></div>
+                  <div class="field-row" role="row"><strong>Signal</strong><span>pattern, count, window, baseline, velocity, sentiment, confidence</span><span>Records the inputs used to qualify an item for review.</span></div>
+                  <div class="field-row" role="row"><strong>Decision + outcome</strong><span>recommendation, audience, owner, status, KPI, review_at, result</span><span>Closes the loop from insight to observed value.</span></div>
+                </div>
+                <div class="code-panel" aria-label="Example signal payload"><div class="code-panel-head"><span>GET /api/signals/sig_omg_48h</span><span>Illustrative response</span></div><pre><code>{
+  <span class="token-key">"id"</span>: <span class="token-value">"sig_omg_48h"</span>,
+  <span class="token-key">"artistId"</span>: <span class="token-value">"artist_kentheman"</span>,
+  <span class="token-key">"windowHours"</span>: 48,
+  <span class="token-key">"pattern"</span>: <span class="token-value">"Walk-in confidence"</span>,
+  <span class="token-key">"matchCount"</span>: 286,
+  <span class="token-key">"baselineMultiple"</span>: 3.5,
+  <span class="token-key">"sentimentPositiveNeutral"</span>: 0.92,
+  <span class="token-key">"audienceCoverage"</span>: 0.72,
+  <span class="token-key">"provenance"</span>: { <span class="token-key">"sourceCount"</span>: 41, <span class="token-key">"isMock"</span>: false }
+}</code></pre></div>
+              </section>
+
+              <section class="guide-section" id="detect" aria-labelledby="detect-title">
+                <div class="guide-section-heading"><span>04</span><div><h2 id="detect-title">Signal qualification</h2><p>Use recurrence, velocity, cross-platform sentiment, and audience concentration to determine which patterns enter the decision queue.</p></div></div>
+                <div class="decision-rule">
+                  <article><span>Surface</span><h3>Pattern recurrence</h3><p>A pattern repeats at least 75 times inside 24–48 hours and rises at least 2.5× above that campaign’s normal pace.</p></article>
+                  <article><span>Validate</span><h3>Sentiment consistency</h3><p>Compare sentiment and top comments across at least two permitted sources. Flag sarcasm and language gaps.</p></article>
+                  <article><span>Review</span><h3>Strategist context</h3><p>A strategist evaluates artist fit and chooses whether to change strategy, target another audience, monitor, or dismiss the signal.</p></article>
+                </div>
+                <div class="security-callout"><span>i</span><div><strong>The thresholds shown in the mock are starting hypotheses.</strong><p>Calibrate them per artist and campaign using false positives, reversals, actions taken, and measured outcomes. Sentiment alone should never trigger a recommendation.</p></div></div>
+              </section>
+
+              <section class="guide-section" id="load" aria-labelledby="load-title">
+                <div class="guide-section-heading"><span>05</span><div><h2 id="load-title">Frontend data loading</h2><p>Replace the in-browser campaign objects with a data client that calls backend endpoints and maps responses into the current view model.</p></div></div>
+                <div class="endpoint-table" role="table" aria-label="Suggested backend endpoints">
+                  <div class="endpoint-row is-head" role="row"><span>Method</span><span>Endpoint</span><span>Feeds</span></div>
+                  <div class="endpoint-row" role="row"><strong>GET</strong><span>/api/artists?status=active</span><span>Artist selector and decision queue</span></div>
+                  <div class="endpoint-row" role="row"><strong>GET</strong><span>/api/artists/:id/snapshot?range=90d</span><span>Provided figures and historical sparklines</span></div>
+                  <div class="endpoint-row" role="row"><strong>GET</strong><span>/api/signals?status=needs_decision</span><span>Ranked decision queue</span></div>
+                  <div class="endpoint-row" role="row"><strong>GET</strong><span>/api/signals/:id/evidence</span><span>Pattern chart, comments, provenance, audience</span></div>
+                  <div class="endpoint-row" role="row"><strong>POST</strong><span>/api/decisions</span><span>Recommendation, strategy note, owner, and KPI</span></div>
+                  <div class="endpoint-row" role="row"><strong>PATCH</strong><span>/api/decisions/:id/outcome</span><span>Launch status, result and learning</span></div>
+                  <div class="endpoint-row" role="row"><strong>POST</strong><span>/api/briefs/:id/share-links</span><span>Signed, revocable public brief page</span></div>
+                </div>
+                <div class="code-panel" aria-label="Example frontend data loading"><div class="code-panel-head"><span>Frontend adapter</span><span>Replace the current mock lookup</span></div><pre><code><span class="token-key">async function</span> loadDecisionRoom(artistId, windowHours = 48) {
+  const response = await fetch(
+    <span class="token-value">`/api/artists/${artistId}/decision-room?window=${windowHours}`</span>,
+    { credentials: <span class="token-value">'include'</span> }
+  );
+  if (!response.ok) throw new Error(<span class="token-value">'Decision room unavailable'</span>);
+  return response.json();
+}</code></pre></div>
+              </section>
+
+              <section class="guide-section" id="states" aria-labelledby="states-title">
+                <div class="guide-section-heading"><span>06</span><div><h2 id="states-title">Error and partial-data states</h2><p>Preserve available evidence when a source is delayed and identify the missing platform, field, or time range.</p></div></div>
+                <div class="state-checklist">
+                  <div><strong>Loading</strong><span>Reserve chart and metric dimensions; state which window is loading.</span></div>
+                  <div><strong>Empty</strong><span>No qualifying signal is a valid result. Suggest the next review time.</span></div>
+                  <div><strong>Partial</strong><span>Show available sources and lower confidence or coverage explicitly.</span></div>
+                  <div><strong>Expired access</strong><span>Name the disconnected platform and give an authorized user a reconnect path.</span></div>
+                  <div><strong>Stale data</strong><span>Keep the last successful snapshot with its timestamp and disable approval if needed.</span></div>
+                  <div><strong>Share revoked</strong><span>Return a clear unavailable page without exposing internal brief details.</span></div>
+                </div>
+              </section>
+
+              <section class="guide-finish" aria-labelledby="guide-finish-title"><div><h2 id="guide-finish-title">Integration test flow</h2><p>Open an artist, approve the recommendation, preview a result, and generate a public brief link.</p></div><a class="button" href="index.html?artist=kentheman">Open test dashboard</a></section>
+            </div>
+          </div>
+        </div>
+        <footer><span>The Swamp concept prototype · Technical handoff guide</span><span>No production credentials are stored in this site</span></footer>
+      </main>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" hidden><a href="index.html">Dashboard</a><a href="signal-library.html">Decision Queue</a><a href="audiences.html">Audiences</a><a href="shared-briefs.html">Shared Briefs</a><a href="implementation-guide.html" aria-current="page">Implementation Guide</a></div>
+    <script type="module" src="workspace.js"></script>
+  </body>
+</html>
