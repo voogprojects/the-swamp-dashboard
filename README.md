@@ -1,6 +1,6 @@
 # The Swamp — Capstone prototype
 
-The Swamp is an interactive artist campaign dashboard for reviewing performance, social signals, audience concentration, recommendations, and campaign results.
+The Swamp is an interactive artist intelligence dashboard for reviewing a roster, social and streaming performance, content, audiences, sentiment, and analytics-backed recommendations.
 
 ## Run it
 
@@ -14,24 +14,24 @@ The presentation preview is protected by a static client-side password gate. Use
 
 ## Demo path
 
-1. Open **Decision Queue** to review the three highest-priority campaign signals.
-2. Use the campaign selector to switch between the KenTheMan, Stray Kids, and Mergui illustrative mocks.
-3. Follow the analysis pipeline from data collection through measurement.
-4. Review signal criteria, analytics, source comments, audience attribution, and the recommended action.
-5. Add a strategy note, approve the action, and preview the illustrative result.
-6. Select **Share** to create a local public-brief URL, or **Preview brief** to copy the brief into Google Docs or download HTML.
-7. Open **Implementation Guide** for the proposed APIs, credentials, data contract, and frontend integration.
+1. Open **Portfolio** for the daily executive snapshot across KenTheMan, Stray Kids, and Mergui.
+2. Select an artist card to review headline growth, engagement, monthly listeners, and streaming totals.
+3. Move through Social, Content, Audience, Sentiment, and Alerts to see the deeper dashboard.
+4. Save or dismiss an alert, expand representative comments, and add an internal strategy note.
+5. Select **Share** to generate a working artist-facing report link.
+6. Select **Export PDF** and use the browser print dialog to save a frozen report snapshot.
+7. Open **Setup Guide** for the proposed APIs, credentials, data contract, and frontend integration.
 
 ## Prototype routes
 
-- `index.html` — artist campaign dashboard
-- `signal-library.html` — prioritized decision queue
-- `audiences.html` — cross-campaign audience shifts
-- `shared-briefs.html` — artist-ready brief archive
+- `index.html` — executive portfolio (artist query parameters open the artist workspace)
+- `signal-library.html` — prioritized alerts
+- `audiences.html` — cross-artist audience comparison
+- `shared-briefs.html` — artist-facing report archive
 - `implementation-guide.html` — backend handoff and data integration guide
-- `share.html?artist=kentheman&range=48` — mock public brief page
+- `share.html?artist=kentheman&range=48` — mock artist-facing report page
 
-The current artist profile figures are the provided Republic Distro data. The September 2025–August 2026 sparklines, interval-level signal curves, comparison periods, and campaign narratives are clearly labeled illustrative mock data.
+The supplied monthly-listener, Instagram-follower, TikTok-follower, and all-time stream totals are preserved. All other platform values, histories, content performance, audience details, sentiment, comparisons, and recommendations are clearly treated as illustrative mock data.
 
 The share URLs are functional local previews, not individually token-protected pages. A production backend should issue signed, revocable, expiring links and keep platform credentials out of browser code.
 

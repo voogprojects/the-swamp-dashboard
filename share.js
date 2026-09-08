@@ -61,7 +61,7 @@ if (!brief) {
   setText('#public-success-title', brief.kpi);
   setText('#public-success-copy', brief.success);
   document.querySelector('#back-to-workspace').href = `index.html?artist=${artistKey}`;
-  document.title = `${brief.artist} · ${brief.track} decision brief`;
+  document.title = `${brief.artist} · ${brief.track} artist report`;
 }
 
 document.querySelector('#copy-public-link').addEventListener('click', async (event) => {

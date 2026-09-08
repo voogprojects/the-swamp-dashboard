@@ -80,7 +80,7 @@ const renderGate = () => {
           <p class="site-auth__error" data-site-auth-error aria-live="polite"></p>
           <button type="submit">Open dashboard</button>
         </form>
-        <p class="site-auth__meta">Republic Records · Group 1:A</p>
+        <p class="site-auth__meta">Private presentation · Group 1:A</p>
       </section>
     </div>
   `);

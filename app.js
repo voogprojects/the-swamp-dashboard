@@ -1,631 +1,312 @@
 const qs = (selector, scope = document) => scope.querySelector(selector);
 const qsa = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 
-const campaigns = {
+const artists = {
   kentheman: {
-    artist: 'KenTheMan', initials: 'KM', theme: 'kentheman', image: 'assets/artists/kentheman.jpg', campaign: 'OMG · release momentum', track: 'OMG',
-    profile: { genre: 'Hip hop', monthlyListeners: '823,708', instagramFollowers: '666K', tiktokFollowers: '476K', usStreamsAtd: '610.7M', worldwideStreamsAtd: '662M' },
-    confidence: 'Momentum signal · high confidence', pattern: '“Walk-in confidence”', patternLabel: 'theme', sources: 41,
-    ranges: { 24: { count: 176, multiple: '4.0×' }, 48: { count: 286, multiple: '3.5×' }, 168: { count: 468, multiple: '2.7×' } },
-    keepTitle: 'Walk-in confidence is the leading repeat pattern',
-    keepCopy: 'Fans are using “OMG” for entrance clips, getting-ready reveals, and captions about taking up space without apology.',
-    platforms: 3, sentiment: '92%',
-    meaningTitle: 'Ages 18–24 lead the pattern in Houston and Atlanta',
-    meaningCopy: 'This segment accounts for 61% of matched posts and is growing faster than the campaign baseline.',
-    quote: '“Put this on before you walk in like the room was waiting for you.”',
-    moveTitle: 'Launch a 72-hour walk-in challenge',
-    actions: [['Today', 'Seed “the room was waiting” creator prompts'], ['Tomorrow', 'Cut an entrance-ready hook loop'], ['72h', 'Test in Houston + Atlanta, ages 18–24']],
-    owner: { initials: 'DM', name: 'Dani Moore · Culture' },
-    chart: { heading: 'Entrance-video mentions accelerated after 8 PM', delta: '+253%', title: 'Walk-in confidence pattern mentions', time: '20:18 · TikTok', event: 'Reveal format breaks out' },
-    mix: ['67%', '18%', '15%'], audience: { age: '18–24', regions: 'Houston + Atlanta', share: '61%', coverage: '72%', bars: [['Houston · 18–24', '29%', 92], ['Atlanta · 18–24', '24%', 76], ['Dallas · 18–24', '16%', 51], ['Chicago · 25–34', '10%', 32]] },
-    lens: 'The energy is distinctly confident and communal. Keep the execution rooted in personality and regional culture; avoid polishing it into a generic empowerment trend.',
-    briefHeadline: '“Walk-in confidence” is the leading 48-hour pattern for “OMG.”',
-    briefActions: 'Creator prompt today · entrance hook tomorrow · Houston + Atlanta test within 72 hours',
-    comments: [
-      ['T', '@frontdoorenergy', '2.1K likes', '“Put this on before you walk in like the room was waiting for you.”', 'Matched: entrance · confidence · taking space'],
-      ['Y', '@southsideframe', '1.3K likes', '“The song for when the fit is right and the answer is already yes.”', 'Matched: getting ready · certainty · reveal'],
-      ['I', '@bigstepfiles', '779 likes', '“Houston confidence needs its own volume setting.”', 'Matched: Houston · confidence · culture']
-    ]
+    name: 'KenTheMan', genre: 'Hip hop', image: 'assets/artists/kentheman.jpg', campaign: 'OMG · release momentum', track: 'OMG', initials: 'KM',
+    exact: { listeners: '823,708', instagram: '666K', tiktok: '476K', usStreams: '610.7M', worldStreams: '662M' },
+    summary: { audience: '1.14M', socialGrowth: '+3.8%', engagement: '6.8%', listenerGrowth: '+6.2%', reach: '35.1M' },
+    histories: {
+      audience: [890, 914, 938, 966, 990, 1015, 1041, 1069, 1090, 1115, 1134, 1142],
+      engagement: [4.2, 4.6, 4.4, 5.0, 5.3, 5.1, 5.7, 6.0, 5.8, 6.3, 6.5, 6.8],
+      listeners: [482, 501, 529, 552, 580, 609, 642, 677, 706, 745, 789, 824]
+    },
+    alert: { level: 'opportunity', label: 'Momentum', title: 'Entrance videos are outperforming the content baseline', detail: 'The “walk-in confidence” pattern appeared 286 times in 48 hours across three platforms.', change: '+253%', metric: 'pattern velocity', recommendation: 'Shift the next 72 hours of creative toward entrance reveals and getting-ready edits, led by Houston and Atlanta creators.' },
+    alerts: [
+      { level: 'opportunity', label: 'Creative opportunity', title: 'Walk-in edits are 3.5× above baseline', detail: '286 matches · 48h · TikTok, Reels, Shorts', recommendation: 'Prioritize entrance reveals in the next three posts.', trigger: 'Volume +253% vs prior 48h' },
+      { level: 'watch', label: 'Audience shift', title: 'Houston and Atlanta are gaining share', detail: 'Ages 18–24 now account for 61% of matched posts', recommendation: 'Move the first regional creator test into these markets.', trigger: '+14 pts concentration in 7d' },
+      { level: 'risk', label: 'Monitor', title: 'Instagram reach is flattening', detail: 'Reach is down while saves remain above baseline', recommendation: 'Keep the concept, but shorten the Reel opening to two seconds.', trigger: 'Reach −8% · saves +11%' }
+    ],
+    platforms: [
+      ['Instagram', 'I', '666K', '+1.1%', '5.9%', '12.8M', '7'], ['TikTok', 'T', '476K', '+5.5%', '8.7%', '18.6M', '11'],
+      ['YouTube', 'Y', '184K', '+2.2%', '6.1%', '6.4M', '4'], ['X', 'X', '142K', '+0.4%', '2.8%', '3.1M', '9'], ['Facebook', 'F', '219K', '+0.2%', '1.9%', '1.7M', '5']
+    ],
+    formats: [['TikTok video', '6.2M', '8.7%', '+42%'], ['Instagram Reel', '3.4M', '5.9%', '+18%'], ['YouTube Short', '2.1M', '6.1%', '+27%'], ['Carousel', '814K', '4.2%', '−6%']],
+    posts: [
+      { platform: 'TikTok', format: 'Video', title: 'POV: the room was waiting', age: '18h', views: '8.9M', engagement: '11.4%', shares: '412K', saves: '286K', position: '53% 24%', tone: 'warm' },
+      { platform: 'Instagram', format: 'Reel', title: 'The entrance before the entrance', age: '1d', views: '4.2M', engagement: '7.8%', shares: '184K', saves: '221K', position: '46% 38%', tone: 'mono' },
+      { platform: 'YouTube', format: 'Short', title: 'OMG live walk-in', age: '3d', views: '2.6M', engagement: '6.4%', shares: '78K', saves: '94K', position: '63% 30%', tone: 'cool' }
+    ],
+    audience: { countries: [['United States', '62%', 100], ['Canada', '8%', 41], ['United Kingdom', '7%', 36], ['Germany', '4%', 25]], cities: 'Houston · Atlanta · Dallas · Chicago', ages: [['18–24', '46%', 100], ['25–34', '31%', 67], ['13–17', '12%', 26], ['35–44', '8%', 17]], gender: '68% women · 29% men · 3% self-described', returning: '57% returning · 43% new' },
+    overlap: [['Mergui', '18%', 'Pop discovery + ages 18–24'], ['Stray Kids', '12%', 'High-engagement short-form viewers']],
+    sentiment: { positive: 78, neutral: 14, negative: 8, themes: [['Confidence', '34%'], ['Entrance / reveal', '27%'], ['Houston pride', '18%'], ['Overexposure', '8%']], comments: ['“Put this on before you walk in like the room was waiting for you.”', '“Houston confidence needs its own volume setting.”', '“I’ve heard this hook all day—but it still works.”'] },
+    note: 'The energy is confident and communal. Keep the execution rooted in personality and regional culture; avoid polishing it into a generic empowerment trend.',
+    series: [5, 6, 8, 7, 9, 10, 12, 15, 14, 24, 33, 41]
   },
   straykids: {
-    artist: 'Stray Kids', initials: 'SK', theme: 'straykids', image: 'assets/artists/stray-kids.jpg', campaign: 'THIS & THAT · release campaign', track: 'THIS & THAT',
-    profile: { genre: 'K-pop', monthlyListeners: '10,940,227', instagramFollowers: '33.4M', tiktokFollowers: '37.6M', usStreamsAtd: '5.2B', worldwideStreamsAtd: '29.8B' },
-    confidence: 'Momentum signal · high confidence', pattern: '“Why choose one?”', patternLabel: 'format', sources: 57,
-    ranges: { 24: { count: 294, multiple: '4.4×' }, 48: { count: 473, multiple: '3.8×' }, 168: { count: 812, multiple: '3.0×' } },
-    keepTitle: 'Split-screen edits are the leading repeat format',
-    keepCopy: 'Fans are using “THIS & THAT” for high-contrast edits that pair two moods, styles, biases, or sides of the same identity.',
-    platforms: 4, sentiment: '94%',
-    meaningTitle: 'Ages 13–24 lead the pattern in Indonesia and Mexico',
-    meaningCopy: 'This segment accounts for 58% of matched posts and has the highest localized participation growth.',
-    quote: '“The whole point is I’m this AND that. Pick a side? No thanks.”',
-    moveTitle: 'Give the fandom an official “both” template',
-    actions: [['Today', 'Release member-led split-screen prompts'], ['Tomorrow', 'Publish an editable beat-switch template'], ['72h', 'Localize for Indonesia + Mexico, ages 13–24']],
-    owner: { initials: 'HL', name: 'Hana Lee · Global' },
-    chart: { heading: 'Split-screen edits surged after midnight KST', delta: '+311%', title: 'This-and-that format mentions', time: '00:34 · TikTok', event: 'Fan template takes off' },
-    mix: ['55%', '29%', '16%'], audience: { age: '13–24', regions: 'Indonesia + Mexico', share: '58%', coverage: '78%', bars: [['Indonesia · 13–17', '27%', 90], ['Mexico · 18–24', '23%', 77], ['United States · 18–24', '18%', 60], ['Japan · 18–24', '14%', 47]] },
-    lens: 'The participation is native to how STAY already creates and remixes. Let the members model the contrast, then leave enough structure open for fandom interpretation.',
-    briefHeadline: 'Split-screen edits are the leading 48-hour pattern for “THIS & THAT.”',
-    briefActions: 'Member prompts today · editable template tomorrow · Indonesia + Mexico localization within 72 hours',
-    comments: [
-      ['T', '@twosidesstay', '4.8K likes', '“The whole point is I’m this AND that. Pick a side? No thanks.”', 'Matched: both sides · identity · participation'],
-      ['Y', '@skzframe', '2.7K likes', '“Every member pairing creates a completely different version of this trend.”', 'Matched: members · pairing · remixability'],
-      ['I', '@staymakes', '1.9K likes', '“One sound, two moods, unlimited edits.”', 'Matched: dual mood · edit format']
-    ]
-  },
-  txt: {
-    artist: 'TOMORROW X TOGETHER', initials: 'TXT', theme: 'txt', image: 'assets/artists/txt.jpg', campaign: 'Beautiful Strangers · catalog pulse', track: 'Beautiful Strangers',
-    confidence: 'Momentum signal · high confidence', pattern: '“Different together”', patternLabel: 'story', sources: 46,
-    ranges: { 24: { count: 238, multiple: '3.9×', verb: 'is accelerating' }, 48: { count: 391, multiple: '3.3×', verb: 'is organizing the fan conversation' }, 168: { count: 667, multiple: '2.8×', verb: 'has become the week’s strongest story' } },
-    keepTitle: 'A friendship story is repeating globally',
-    keepCopy: 'Fans are pairing “Beautiful Strangers” with friendship transformations, found-family edits, and stories about growing through difference.',
-    platforms: 4, sentiment: '96%',
-    meaningTitle: 'Uniqueness is landing as a source of connection',
-    meaningCopy: 'The release is giving fans language for relationships where differences make both people feel stronger rather than farther apart.',
-    quote: '“We didn’t become the same. We just became more ourselves together.”',
-    moveTitle: 'Invite fans to name their beautiful stranger',
-    actions: [['Today', 'Launch a paired found-family story prompt'], ['Tomorrow', 'Cut a five-member transformation sequence'], ['72h', 'Localize for Japan + United States, ages 13–24']],
-    owner: { initials: 'EK', name: 'Eun Kim · Fandom' },
-    chart: { heading: 'Friendship-story mentions rose after 6 PM', delta: '+276%', title: 'Different-together story mentions', time: '18:46 · Shorts', event: 'Friend edit crosses over' },
-    mix: ['48%', '33%', '19%'], audience: { age: '13–24', regions: 'Japan + United States', share: '56%', coverage: '81%', bars: [['Japan · 18–24', '25%', 88], ['United States · 13–17', '22%', 78], ['Philippines · 18–24', '17%', 60], ['South Korea · 18–24', '13%', 46]] },
-    lens: 'The found-family interpretation is aligned with the group’s larger storytelling. Keep the execution emotionally specific and member-led, not like a generic friendship montage.',
-    briefHeadline: '“Beautiful Strangers” is becoming a fan language for growing stronger through difference.',
-    briefActions: 'Found-family prompt today · member sequence tomorrow · Japan + US localization within 72 hours',
-    comments: [
-      ['T', '@tomorrowfound', '3.9K likes', '“We didn’t become the same. We just became more ourselves together.”', 'Matched: difference · growth · together'],
-      ['Y', '@moastories', '2.2K likes', '“For the friend who changed your life without asking you to change who you are.”', 'Matched: friendship · identity · change'],
-      ['I', '@fivebrightstars', '1.4K likes', '“Found family in one song.”', 'Matched: found family · belonging']
-    ]
+    name: 'Stray Kids', genre: 'K-pop', image: 'assets/artists/stray-kids.jpg', campaign: 'THIS & THAT · release campaign', track: 'THIS & THAT', initials: 'SK',
+    exact: { listeners: '10,940,227', instagram: '33.4M', tiktok: '37.6M', usStreams: '5.2B', worldStreams: '29.8B' },
+    summary: { audience: '71.0M', socialGrowth: '+2.9%', engagement: '8.4%', listenerGrowth: '+7.5%', reach: '482M' },
+    histories: {
+      audience: [55.9, 57.2, 58.3, 59.9, 61.2, 62.8, 64.2, 65.7, 67.0, 68.4, 69.7, 71.0],
+      engagement: [7.7, 8.2, 7.9, 8.8, 8.1, 8.5, 9.0, 8.4, 8.9, 8.1, 8.7, 8.4],
+      listeners: [8.82, 9.14, 8.76, 9.58, 9.21, 9.87, 10.31, 9.94, 10.62, 10.18, 10.71, 10.94]
+    },
+    alert: { level: 'opportunity', label: 'Breakout format', title: 'Split-screen edits are moving between global fan markets', detail: '473 matched posts in 48 hours, with repeated peaks across Asian and North American time zones.', change: '+311%', metric: 'format velocity', recommendation: 'Publish an official editable split-screen template and localize the prompt for Indonesia and Mexico.' },
+    alerts: [
+      { level: 'opportunity', label: 'Creative opportunity', title: 'Split-screen edits are 3.8× above baseline', detail: '473 matches · 48h · four platforms', recommendation: 'Release a member-led template while remix velocity is rising.', trigger: 'Volume +311% vs prior 48h' },
+      { level: 'watch', label: 'Market shift', title: 'Mexico moved into the top-three growth markets', detail: 'Follower growth accelerated across TikTok and YouTube', recommendation: 'Add Spanish copy to the next fan prompt.', trigger: '+19% audience growth in 7d' }
+    ],
+    platforms: [
+      ['Instagram', 'I', '33.4M', '+1.8%', '7.1%', '164M', '9'], ['TikTok', 'T', '37.6M', '+3.9%', '10.8%', '286M', '15'],
+      ['YouTube', 'Y', '21.2M', '+2.4%', '8.3%', '198M', '8'], ['X', 'X', '11.1M', '+1.1%', '4.6%', '82M', '18'], ['Facebook', 'F', '6.7M', '+0.6%', '3.2%', '31M', '6']
+    ],
+    formats: [['TikTok video', '48.6M', '10.8%', '+61%'], ['YouTube Short', '29.1M', '8.3%', '+34%'], ['Instagram Reel', '23.7M', '7.1%', '+28%'], ['Carousel', '8.2M', '5.7%', '+9%']],
+    posts: [
+      { platform: 'TikTok', format: 'Video', title: 'This side & that side', age: '9h', views: '61.8M', engagement: '12.6%', shares: '3.8M', saves: '2.1M', position: '50% 40%', tone: 'cool' },
+      { platform: 'YouTube', format: 'Short', title: 'One sound, two moods', age: '1d', views: '34.2M', engagement: '9.2%', shares: '1.4M', saves: '982K', position: '42% 54%', tone: 'mono' },
+      { platform: 'Instagram', format: 'Reel', title: 'Why choose one?', age: '2d', views: '27.9M', engagement: '8.8%', shares: '1.1M', saves: '846K', position: '58% 45%', tone: 'warm' }
+    ],
+    audience: { countries: [['Indonesia', '14%', 100], ['United States', '12%', 86], ['Mexico', '10%', 71], ['Japan', '9%', 64]], cities: 'Jakarta · Mexico City · Los Angeles · Tokyo', ages: [['18–24', '42%', 100], ['13–17', '29%', 69], ['25–34', '21%', 50], ['35–44', '5%', 12]], gender: '74% women · 23% men · 3% self-described', returning: '71% returning · 29% new' },
+    overlap: [['Mergui', '9%', 'International pop + ages 18–24'], ['KenTheMan', '12%', 'High-engagement short-form viewers']],
+    sentiment: { positive: 84, neutral: 10, negative: 6, themes: [['Dual identity', '31%'], ['Member pairings', '28%'], ['Edit templates', '24%'], ['Format fatigue', '6%']], comments: ['“The whole point is I’m this AND that. Pick a side? No thanks.”', '“Every member pairing creates a completely different edit.”', '“Please keep the template open for international fans.”'] },
+    note: 'Participation is native to how the fandom already creates and remixes. Let the members model the contrast, then leave room for fans to interpret it.',
+    series: [14, 18, 16, 21, 25, 19, 31, 45, 38, 62, 74, 66]
   },
   mergui: {
-    artist: 'Mergui', initials: 'M', theme: 'mergui', image: 'assets/artists/mergui.jpg', campaign: 'Alien · growth campaign', track: 'Alien',
-    profile: { genre: 'Pop / singer-songwriter', monthlyListeners: '426,924', instagramFollowers: '436K', tiktokFollowers: '336K', usStreamsAtd: '32.5M', worldwideStreamsAtd: '244.7M' },
-    confidence: 'Emerging signal · medium-high confidence', pattern: '“Beautifully out of place”', patternLabel: 'theme', sources: 26,
-    ranges: { 24: { count: 81, multiple: '3.2×' }, 48: { count: 139, multiple: '2.8×' }, 168: { count: 254, multiple: '2.3×' } },
-    keepTitle: 'Relocation and reinvention are the leading repeat themes',
-    keepCopy: 'New listeners are using “Alien” for relocation, reinvention, and first-day-in-a-new-city edits centered on not quite fitting yet.',
-    platforms: 3, sentiment: '88%',
-    meaningTitle: 'Ages 18–24 lead the pattern in the US and Germany',
-    meaningCopy: 'This segment accounts for 49% of matched posts and shows the highest new-listener activity.',
-    quote: '“For everyone building a life somewhere that still feels a little unfamiliar.”',
-    moveTitle: 'Make discovery personal, not promotional',
-    actions: [['Today', 'Invite first-day-in-a-new-place stories'], ['Tomorrow', 'Release an intimate live-room cut'], ['72h', 'Test in United States + Germany, ages 18–24']],
-    owner: { initials: 'AR', name: 'Alex Rivera · Growth' },
-    chart: { heading: 'Discovery mentions climbed after 9 PM', delta: '+171%', title: 'Beautifully-out-of-place mentions', time: '21:12 · Reels', event: 'Relocation edit lifts' },
-    mix: ['44%', '36%', '20%'], audience: { age: '18–24', regions: 'United States + Germany', share: '49%', coverage: '67%', bars: [['United States · 18–24', '22%', 84], ['Germany · 18–24', '18%', 69], ['United Kingdom · 25–34', '14%', 54], ['Israel · 18–24', '12%', 46]] },
-    lens: 'The outsider interpretation can introduce Mergui without over-explaining him. Keep it intimate and human; avoid turning “Alien” into science-fiction visual shorthand.',
-    briefHeadline: '“Beautifully out of place” is the leading 48-hour pattern for “Alien.”',
-    briefActions: 'Listener story prompt today · live-room cut tomorrow · US + Germany test within 72 hours',
-    comments: [
-      ['T', '@newcitynotes', '1.1K likes', '“For everyone building a life somewhere that still feels a little unfamiliar.”', 'Matched: new city · outsider · becoming'],
-      ['Y', '@roomtonepop', '746 likes', '“I found him through this song and now I need the whole story.”', 'Matched: discovery · artist curiosity'],
-      ['I', '@softlanding', '508 likes', '“Not belonging yet can still look beautiful.”', 'Matched: belonging · vulnerability · beauty']
-    ]
-  },
-  taylor: {
-    artist: 'Taylor Swift', initials: 'TS', theme: 'taylor', campaign: 'Midnight Rain · catalog moment', track: 'Midnight Rain',
-    confidence: 'Momentum signal · high confidence', pattern: '“Choosing ambition”', patternLabel: 'interpretation', sources: 44,
-    ranges: { 24: { count: 201, multiple: '4.2×', verb: 'is accelerating' }, 48: { count: 312, multiple: '3.6×', verb: 'is becoming the fan-made story' }, 168: { count: 504, multiple: '2.9×', verb: 'has become the week’s clearest story' } },
-    keepTitle: 'One lyric interpretation is repeating',
-    keepCopy: 'Fans are using “Midnight Rain” to frame choosing ambition, reinvention, and the life they built for themselves.',
-    platforms: 3, sentiment: '89%',
-    meaningTitle: 'The song is becoming a self-definition anthem',
-    meaningCopy: 'Conversation is shifting away from nostalgia and toward proud, forward-looking identity stories.',
-    quote: '“It stopped feeling sad when I realized she chose the life she wanted.”',
-    moveTitle: 'Turn the next 72 hours into a fan-story prompt',
-    actions: [['Today', 'Invite fans to name the path they chose'], ['Tomorrow', 'Cut a lyric-led vertical template'], ['72h', 'Test in the UK + Philippines, ages 18–24']],
-    owner: { initials: 'KP', name: 'Kira Patel · Audience' },
-    chart: { heading: 'Identity-story mentions accelerated after 9 PM', delta: '+268%', title: 'Choosing ambition pattern mentions', time: '21:07 · TikTok', event: 'Story prompt breaks out' },
-    mix: ['58%', '27%', '15%'], audience: { age: '18–24', regions: 'UK + Philippines', share: '54%', coverage: '74%', bars: [['United Kingdom · 18–24', '24%', 88], ['Philippines · 18–24', '21%', 77], ['United States · 18–24', '18%', 66], ['Australia · 25–34', '12%', 44]] },
-    lens: 'This is strongest when it celebrates agency, not when it re-litigates old relationships. Keep the prompt centered on fans’ own choices.',
-    briefHeadline: '“Midnight Rain” is becoming a fan shorthand for choosing your own path.',
-    briefActions: 'Fan prompt today · lyric-led template tomorrow · UK + Philippines test within 72 hours',
-    comments: [
-      ['T', '@ownmyorbit', '2.4K likes', '“It stopped feeling sad when I realized she chose the life she wanted.”', 'Matched: chose her path · ambition · reinvention'],
-      ['Y', '@chapterthirteen', '1.1K likes', '“For everyone who picked the dream and built a home inside it.”', 'Matched: chose the dream · self-definition'],
-      ['I', '@cityofpages', '884 likes', '“Midnight Rain feels different when the life you chose finally fits.”', 'Matched: life you chose · personal growth']
-    ]
-  },
-  ariana: {
-    artist: 'Ariana Grande', initials: 'AG', theme: 'ariana', campaign: 'we can’t be friends · reactivation', track: 'we can’t be friends',
-    confidence: 'Momentum signal · high confidence', pattern: '“Quiet healing”', patternLabel: 'theme', sources: 38,
-    ranges: { 24: { count: 148, multiple: '3.7×', verb: 'is accelerating' }, 48: { count: 226, multiple: '3.1×', verb: 'is organizing the conversation' }, 168: { count: 389, multiple: '2.5×', verb: 'has become the week’s clearest theme' } },
-    keepTitle: 'A new emotional use-case is repeating',
-    keepCopy: 'Fans are pairing “we can’t be friends” with soft-transition edits, boundary-setting captions, and closing-chapter stories.',
-    platforms: 3, sentiment: '86%',
-    meaningTitle: 'Fans are hearing emotional restraint as strength',
-    meaningCopy: 'The conversation is less about heartbreak and more about protecting peace without needing a dramatic ending.',
-    quote: '“Healing can be quiet. You don’t have to prove you’re over it.”',
-    moveTitle: 'Own the “quiet healing” story before it peaks',
-    actions: [['Today', 'Brief creators on soft-reset storytelling'], ['Tomorrow', 'Release a stripped vocal-led edit'], ['72h', 'Test in Brazil + Mexico, ages 18–24']],
-    owner: { initials: 'SR', name: 'Sofia Reyes · Digital' },
-    chart: { heading: 'Healing-language mentions rose after 7 PM', delta: '+219%', title: 'Quiet healing pattern mentions', time: '19:22 · TikTok', event: 'Transition edit lifts' },
-    mix: ['64%', '20%', '16%'], audience: { age: '18–24', regions: 'Brazil + Mexico', share: '59%', coverage: '69%', bars: [['Brazil · 18–24', '31%', 92], ['Mexico · 18–24', '25%', 74], ['United States · 18–24', '16%', 47], ['Philippines · 18–24', '10%', 30]] },
-    lens: 'The signal fits Ariana’s emotional precision, but the tone must stay understated. Avoid turning a personal boundary into generic breakup motivation.',
-    briefHeadline: '“we can’t be friends” is becoming a soundtrack for quiet, self-protective healing.',
-    briefActions: 'Soft-reset prompt today · stripped edit tomorrow · Brazil + Mexico test within 72 hours',
-    comments: [
-      ['T', '@softreset', '1.9K likes', '“Healing can be quiet. You don’t have to prove you’re over it.”', 'Matched: quiet healing · boundaries · moving on'],
-      ['Y', '@cloudroom', '1.2K likes', '“This sounds like choosing peace without needing the last word.”', 'Matched: choosing peace · restraint'],
-      ['I', '@mariacuts', '703 likes', '“For the chapter you close gently instead of burning.”', 'Matched: closing chapter · gentle ending']
-    ]
-  },
-  weeknd: {
-    artist: 'The Weeknd', initials: 'TW', theme: 'weeknd', campaign: 'Blinding Lights · catalog resurgence', track: 'Blinding Lights',
-    confidence: 'Emerging signal · medium-high confidence', pattern: '“Night run”', patternLabel: 'use-case', sources: 29,
-    ranges: { 24: { count: 92, multiple: '3.4×', verb: 'is accelerating' }, 48: { count: 147, multiple: '2.9×', verb: 'is becoming a repeat use-case' }, 168: { count: 281, multiple: '2.2×', verb: 'has become a durable weekly pattern' } },
-    keepTitle: 'A performance use-case is crossing platforms',
-    keepCopy: 'Fans are using “Blinding Lights” for night-running, gym-comeback, and neon-city training edits.',
-    platforms: 3, sentiment: '91%',
-    meaningTitle: 'A familiar hit is being recoded as momentum',
-    meaningCopy: 'The catalog conversation is moving from nostalgia toward personal performance, discipline, and after-dark energy.',
-    quote: '“Apparently this song adds a mile to every night run.”',
-    moveTitle: 'Test performance-led nighttime creative',
-    actions: [['Today', 'Seed a night-run visual prompt'], ['Tomorrow', 'Cut a tempo-matched training loop'], ['72h', 'Test in Germany + Mexico, ages 18–34']],
-    owner: { initials: 'MN', name: 'Maya Nguyen · Growth' },
-    chart: { heading: 'Performance mentions climbed after 8 PM', delta: '+184%', title: 'Night-run pattern mentions', time: '20:41 · Reels', event: 'Run-club edit lifts' },
-    mix: ['49%', '31%', '20%'], audience: { age: '18–34', regions: 'Germany + Mexico', share: '52%', coverage: '76%', bars: [['Germany · 25–34', '23%', 82], ['Mexico · 18–24', '20%', 71], ['United States · 25–34', '17%', 61], ['Brazil · 18–24', '13%', 46]] },
-    lens: 'This works because the catalog already carries nocturnal energy. Keep it performance-forward and cinematic; avoid a forced fitness-brand tone.',
-    briefHeadline: '“Blinding Lights” is finding fresh catalog momentum as a night-training soundtrack.',
-    briefActions: 'Night-run prompt today · tempo loop tomorrow · Germany + Mexico test within 72 hours',
-    comments: [
-      ['T', '@runafterdark', '1.5K likes', '“Apparently this song adds a mile to every night run.”', 'Matched: night run · performance · momentum'],
-      ['Y', '@neonmiles', '892 likes', '“Still the fastest way to make a treadmill feel cinematic.”', 'Matched: training · cinematic · tempo'],
-      ['I', '@paceclubmx', '655 likes', '“The unofficial soundtrack for starting again after sunset.”', 'Matched: comeback · after dark · running']
-    ]
+    name: 'Mergui', genre: 'Pop / singer-songwriter', image: 'assets/artists/mergui.jpg', campaign: 'Alien · growth campaign', track: 'Alien', initials: 'M',
+    exact: { listeners: '426,924', instagram: '436K', tiktok: '336K', usStreams: '32.5M', worldStreams: '244.7M' },
+    summary: { audience: '772K', socialGrowth: '+1.7%', engagement: '4.9%', listenerGrowth: '+3.0%', reach: '11.8M' },
+    histories: {
+      audience: [620, 635, 654, 672, 687, 704, 718, 735, 748, 757, 766, 772],
+      engagement: [3.8, 4.1, 4.5, 4.0, 4.7, 5.2, 4.8, 5.4, 5.1, 4.7, 5.0, 4.9],
+      listeners: [248, 268, 292, 282, 319, 344, 332, 370, 398, 386, 415, 427]
+    },
+    alert: { level: 'watch', label: 'Emerging pattern', title: 'Relocation stories are driving discovery and saves', detail: 'The signal is smaller than the rest of the portfolio but has held above baseline for three consecutive days.', change: '+171%', metric: 'discovery velocity', recommendation: 'Test intimate, first-day-in-a-new-place creative before increasing paid reach.' },
+    alerts: [
+      { level: 'opportunity', label: 'Discovery opportunity', title: 'Relocation edits are 2.8× above baseline', detail: '139 matches · 48h · led by Instagram Reels', recommendation: 'Publish the live-room cut with a personal story prompt.', trigger: 'Saves +24% vs prior 48h' },
+      { level: 'risk', label: 'Sentiment watch', title: 'Negative comments rose on paid placements', detail: 'Organic sentiment remains stable; paid reach is the outlier', recommendation: 'Pause the broadest audience set and keep organic discovery live.', trigger: 'Negative sentiment +5 pts' }
+    ],
+    platforms: [
+      ['Instagram', 'I', '436K', '+1.3%', '5.6%', '6.4M', '6'], ['TikTok', 'T', '336K', '+2.2%', '5.1%', '4.8M', '8'],
+      ['YouTube', 'Y', '97K', '+1.1%', '4.4%', '1.9M', '3'], ['X', 'X', '58K', '+0.2%', '2.1%', '640K', '5'], ['Facebook', 'F', '122K', '−0.1%', '1.6%', '410K', '3']
+    ],
+    formats: [['Instagram Reel', '1.8M', '5.6%', '+33%'], ['TikTok video', '1.2M', '5.1%', '+12%'], ['YouTube Short', '684K', '4.4%', '+8%'], ['Static post', '216K', '3.0%', '−14%']],
+    posts: [
+      { platform: 'Instagram', format: 'Reel', title: 'First night in a new city', age: '14h', views: '2.4M', engagement: '7.1%', shares: '92K', saves: '148K', position: '50% 30%', tone: 'mono' },
+      { platform: 'TikTok', format: 'Video', title: 'For everyone still finding home', age: '2d', views: '1.6M', engagement: '5.8%', shares: '61K', saves: '104K', position: '45% 45%', tone: 'cool' },
+      { platform: 'YouTube', format: 'Short', title: 'Alien · live room', age: '4d', views: '742K', engagement: '4.9%', shares: '18K', saves: '43K', position: '62% 34%', tone: 'warm' }
+    ],
+    audience: { countries: [['United States', '31%', 100], ['Israel', '19%', 61], ['Germany', '12%', 39], ['United Kingdom', '9%', 29]], cities: 'Los Angeles · Tel Aviv · Berlin · London', ages: [['18–24', '38%', 100], ['25–34', '34%', 89], ['35–44', '14%', 37], ['13–17', '9%', 24]], gender: '61% women · 36% men · 3% self-described', returning: '44% returning · 56% new' },
+    overlap: [['KenTheMan', '18%', 'Pop discovery + ages 18–24'], ['Stray Kids', '9%', 'International pop audiences']],
+    sentiment: { positive: 69, neutral: 19, negative: 12, themes: [['Belonging', '29%'], ['New city', '24%'], ['Artist discovery', '21%'], ['Ad repetition', '12%']], comments: ['“For everyone building a life somewhere unfamiliar.”', '“I found him through this song and now I need the whole story.”', '“This ad showed up too many times today.”'] },
+    note: 'The outsider interpretation can introduce Mergui without over-explaining him. Keep it intimate and human; avoid science-fiction visual shorthand.',
+    series: [4, 5, 4, 6, 5, 7, 8, 7, 10, 12, 18, 26]
   }
 };
 
-// The final value in each series is anchored to the current figures supplied by
-// the team. Earlier points are intentionally illustrative mock history.
-const profileHistory = {
-  kentheman: {
-    monthlyListeners: [482100, 501400, 528700, 551600, 579800, 608900, 642400, 676800, 705600, 744900, 789400, 823708],
-    instagramFollowers: [572000, 580000, 589000, 598000, 609000, 620000, 633000, 645000, 654000, 660000, 664000, 666000],
-    tiktokFollowers: [318000, 333000, 349000, 366000, 384000, 402000, 421000, 438000, 451000, 462000, 470000, 476000],
-    usStreamsAtd: [398.4, 418.8, 439.9, 460.7, 482.1, 503.8, 526.9, 548.7, 566.5, 582.9, 597.4, 610.7],
-    worldwideStreamsAtd: [431.2, 453.7, 476.8, 499.4, 522.6, 546.5, 571.9, 596.1, 615.8, 633.4, 648.8, 662]
-  },
-  straykids: {
-    monthlyListeners: [8.82, 9.14, 8.76, 9.58, 9.21, 9.87, 10.31, 9.94, 10.62, 10.18, 10.71, 10.940227],
-    instagramFollowers: [27.1, 27.6, 28.1, 28.9, 29.3, 30.0, 30.6, 31.2, 31.8, 32.4, 32.9, 33.4],
-    tiktokFollowers: [28.8, 29.6, 30.2, 31.0, 31.9, 32.8, 33.6, 34.5, 35.2, 36.0, 36.8, 37.6],
-    usStreamsAtd: [3.92, 4.02, 4.12, 4.25, 4.37, 4.48, 4.61, 4.73, 4.85, 4.97, 5.09, 5.2],
-    worldwideStreamsAtd: [23.9, 24.4, 24.9, 25.5, 26.0, 26.6, 27.1, 27.7, 28.2, 28.8, 29.3, 29.8]
-  },
-  mergui: {
-    monthlyListeners: [248300, 267900, 292400, 281600, 318700, 344100, 331900, 369600, 397800, 386200, 414500, 426924],
-    instagramFollowers: [376000, 382000, 389000, 395000, 402000, 408000, 414000, 420000, 426000, 429000, 433000, 436000],
-    tiktokFollowers: [244000, 253000, 265000, 277000, 285000, 296000, 304000, 315000, 322000, 328000, 333000, 336000],
-    usStreamsAtd: [20.1, 21.2, 22.4, 23.5, 24.8, 25.9, 27.1, 28.2, 29.3, 30.4, 31.5, 32.5],
-    worldwideStreamsAtd: [181.3, 186.9, 192.8, 198.4, 204.9, 211.5, 218.1, 224.8, 230.6, 235.4, 240.1, 244.7]
+const artistKeys = Object.keys(artists);
+const rangeLabels = { '24': '24 hours', '48': '48 hours', '168': '7 days', '720': '30 days', campaign: 'Campaign to date' };
+let activeArtist = null;
+
+const sparkline = (values, className = '') => {
+  const width = 240; const height = 68; const padding = 4;
+  const min = Math.min(...values); const max = Math.max(...values); const spread = max - min || 1;
+  const points = values.map((value, index) => ({ x: padding + index * ((width - padding * 2) / (values.length - 1)), y: height - padding - ((value - min) / spread) * (height - padding * 2) }));
+  const path = points.reduce((result, point, index) => `${result}${index ? ' L' : 'M'}${point.x.toFixed(1)} ${point.y.toFixed(1)}`, '');
+  const end = points.at(-1);
+  return `<svg class="data-sparkline ${className}" viewBox="0 0 ${width} ${height}" aria-hidden="true"><path class="spark-fill" d="${path} L${end.x} ${height} L${padding} ${height} Z"/><path class="spark-line" d="${path}"/><circle cx="${end.x}" cy="${end.y}" r="3"/></svg>`;
+};
+
+const rangeControl = (selected = '168', scope = 'portfolio') => `<div class="executive-range" aria-label="Reporting period">${[['24','24h'],['48','48h'],['168','7d'],['720','30d'],['campaign','Campaign']].map(([value, label]) => `<button type="button" data-range="${value}" data-scope="${scope}" aria-pressed="${value === selected}" class="${value === selected ? 'is-selected' : ''}">${label}</button>`).join('')}<button type="button" class="range-calendar" data-custom-date aria-label="Choose custom date range"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4m8-4v4M4 10h16"/></svg></button></div>`;
+
+const renderTopbar = (artist) => {
+  const context = qs('#topbar-context');
+  if (!artist) {
+    context.innerHTML = `<div class="portfolio-context-mark" aria-hidden="true"><span></span><span></span><span></span></div><div><span class="eyebrow">Daily workspace</span><strong>Artist portfolio</strong></div>`;
+    qs('#share-button').hidden = true;
+    qs('#report-button').textContent = 'Export summary';
+    return;
   }
+  context.innerHTML = `<img class="topbar-artist" src="${artist.image}" alt=""/><div><label class="eyebrow" for="artist-selector">Artist</label><select id="artist-selector">${artistKeys.map((key) => `<option value="${key}" ${artists[key] === artist ? 'selected' : ''}>${artists[key].name}</option>`).join('')}</select></div>`;
+  qs('#artist-selector').addEventListener('change', (event) => { window.location.href = `index.html?artist=${event.target.value}`; });
+  qs('#share-button').hidden = false;
+  qs('#report-button').textContent = 'Export PDF';
 };
 
-const evidenceHistory = {
-  kentheman: {
-    24: { series: [7, 8, 7, 9, 10, 11, 14, 13, 18, 24, 31, 36], baseline: [8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12], delta: '+214%', interval: '2h', eventIndex: 8, time: '20:18 · TikTok', event: 'Entrance edit lifts', heading: 'Entrance clips broke out after the evening commute', mix: ['71%', '16%', '13%'], description: 'Pattern mentions build through the evening after an entrance-format TikTok post gains traction.' },
-    48: { series: [5, 6, 8, 7, 9, 10, 12, 15, 14, 24, 33, 41], baseline: [7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 11, 11], delta: '+253%', interval: '4h', eventIndex: 9, time: '20:18 · TikTok', event: 'Reveal format breaks out', heading: 'Entrance-video mentions accelerated after 8 PM', mix: ['67%', '18%', '15%'], description: 'Mentions stay close to baseline before a representative entrance edit creates a sustained second-day rise.' },
-    168: { series: [13, 14, 12, 16, 15, 20, 19, 25, 31, 28, 43, 57], baseline: [14, 14, 15, 15, 16, 16, 17, 18, 18, 19, 19, 20], delta: '+189%', interval: 'daypart', eventIndex: 8, time: 'Fri 20:18 · TikTok', event: 'Houston cluster forms', heading: 'Confidence edits held after the first spike', mix: ['58%', '24%', '18%'], description: 'The week shows an initial lift, a brief reset, and a stronger second wave concentrated in Houston and Atlanta.' }
-  },
-  straykids: {
-    24: { series: [18, 22, 19, 27, 24, 35, 31, 42, 36, 55, 68, 59], baseline: [16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21], delta: '+278%', interval: '2h', eventIndex: 7, time: '00:34 · TikTok', event: 'Member pairing spikes', heading: 'Member-led edits created three distinct peaks', mix: ['61%', '25%', '14%'], description: 'Mentions rise in repeated waves as member pairings move between Asian and North American fan communities.' },
-    48: { series: [14, 18, 16, 21, 25, 19, 31, 45, 38, 62, 74, 66], baseline: [15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21], delta: '+311%', interval: '4h', eventIndex: 7, time: '00:34 · TikTok', event: 'Fan template takes off', heading: 'Split-screen edits surged after midnight KST', mix: ['55%', '29%', '16%'], description: 'The split-screen format produces multiple sharp peaks as the editable template crosses markets and time zones.' },
-    168: { series: [22, 31, 27, 46, 39, 58, 49, 71, 61, 83, 98, 91], baseline: [24, 25, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34], delta: '+241%', interval: 'daypart', eventIndex: 9, time: 'Sat 16:10 · Shorts', event: 'Mexico edits cross over', heading: 'The format renewed with each regional handoff', mix: ['48%', '35%', '17%'], description: 'A sawtooth weekly pattern reflects successive regional handoffs rather than one isolated viral post.' }
-  },
-  mergui: {
-    24: { series: [3, 4, 5, 4, 6, 7, 6, 8, 10, 13, 18, 22], baseline: [4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7], delta: '+126%', interval: '2h', eventIndex: 9, time: '21:12 · Reels', event: 'New-city edit lifts', heading: 'Discovery built slowly, then doubled after 9 PM', mix: ['39%', '25%', '36%'], description: 'Discovery stays near baseline for most of the day before an intimate relocation edit starts a late rise.' },
-    48: { series: [4, 5, 4, 6, 5, 7, 8, 7, 10, 12, 18, 26], baseline: [5, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8], delta: '+171%', interval: '4h', eventIndex: 10, time: '21:12 · Reels', event: 'Relocation edit lifts', heading: 'Discovery mentions climbed after 9 PM', mix: ['44%', '36%', '20%'], description: 'Mentions remain modest but show a clear late inflection led by first-time listeners and relocation stories.' },
-    168: { series: [5, 7, 6, 8, 7, 10, 9, 13, 12, 18, 24, 31], baseline: [6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 10, 10], delta: '+108%', interval: 'daypart', eventIndex: 9, time: 'Sun 19:40 · YouTube', event: 'Live cut drives saves', heading: 'A small signal became a durable discovery curve', mix: ['35%', '44%', '21%'], description: 'The weekly curve is lower-volume but increasingly durable, with a second lift after the live-room cut.' }
-  }
+const portfolioCard = (key, artist, index) => `<a class="portfolio-artist portfolio-artist--${index + 1}" href="index.html?artist=${key}" aria-label="Open ${artist.name} dashboard">
+  <div class="portfolio-artist-image"><img src="${artist.image}" alt=""/><span>${artist.genre}</span><i aria-hidden="true">↗</i></div>
+  <div class="portfolio-artist-body">
+    <div class="portfolio-artist-title"><div><h2>${artist.name}</h2><p>${artist.campaign}</p></div><span class="status-chip status-chip--${artist.alert.level}">${artist.alert.label}</span></div>
+    <div class="portfolio-headline-metrics">
+      <div><span>Social followers</span><strong>${artist.summary.audience}</strong><small>${artist.summary.socialGrowth} vs prior 7d</small></div>
+      <div><span>Engagement rate</span><strong>${artist.summary.engagement}</strong><small>${index === 1 ? '+0.6 pts' : index === 2 ? '−0.1 pts' : '+0.8 pts'} vs prior 7d</small></div>
+      <div><span>Monthly listeners</span><strong>${artist.exact.listeners}</strong><small>${artist.summary.listenerGrowth} vs prior 30d</small></div>
+    </div>
+    <div class="portfolio-chart"><div><span>Follower trajectory</span><small>12-month mock history</small></div>${sparkline(artist.histories.audience)}</div>
+    <div class="portfolio-card-alert"><span>${artist.alert.label}</span><strong>${artist.alert.title}</strong><small>${artist.alert.change} ${artist.alert.metric}</small></div>
+  </div>
+</a>`;
+
+const renderPortfolio = () => {
+  const view = qs('#portfolio-view');
+  view.innerHTML = `
+    <div class="portfolio-heading">
+      <div><p class="page-label">Tuesday, September 8</p><h1 id="portfolio-title">Artist portfolio</h1><p class="page-description">A daily view of audience growth, content performance, and signals that may change social strategy.</p></div>
+      ${rangeControl('168', 'portfolio')}
+    </div>
+
+    <div class="portfolio-status" aria-label="Portfolio status">
+      <div><span>Artists monitored</span><strong>3</strong><small>of 10 available slots</small></div>
+      <div><span>Active alerts</span><strong>5</strong><small>2 new since yesterday</small></div>
+      <div><span>Fastest growth</span><strong>+5.5%</strong><small>KenTheMan · TikTok</small></div>
+      <div><span>Average engagement</span><strong>6.7%</strong><small>+0.4 pts vs prior 7d</small></div>
+    </div>
+
+    <section class="roster-section" aria-labelledby="roster-title">
+      <div class="section-title-row"><div><span class="page-label">Roster</span><h2 id="roster-title">Artist performance</h2></div><span class="data-key"><i></i> Follower and listener totals provided · other metrics and history are mock</span></div>
+      <div class="portfolio-grid">${artistKeys.map((key, index) => portfolioCard(key, artists[key], index)).join('')}</div>
+    </section>
+
+    <section class="daily-brief" aria-labelledby="daily-brief-title">
+      <div class="daily-brief-head"><div><span class="page-label">Since yesterday</span><h2 id="daily-brief-title">What changed</h2></div><a href="signal-library.html">View all alerts <span aria-hidden="true">→</span></a></div>
+      <div class="daily-brief-grid">
+        ${artistKeys.map((key) => { const artist = artists[key]; return `<a href="index.html?artist=${key}#alerts" class="brief-row"><img src="${artist.image}" alt=""/><div><span>${artist.name} · ${artist.alert.label}</span><strong>${artist.alert.title}</strong><small>${artist.alert.detail}</small></div><b>${artist.alert.change}</b></a>`; }).join('')}
+      </div>
+    </section>
+
+    <section class="comparison-section" aria-labelledby="comparison-title">
+      <div class="section-title-row"><div><span class="page-label">Comparison</span><h2 id="comparison-title">Portfolio benchmarks</h2></div><a href="audiences.html">Compare audiences <span aria-hidden="true">→</span></a></div>
+      <div class="comparison-table" role="table" aria-label="Artist benchmark comparison">
+        <div class="comparison-row comparison-row--head" role="row"><span role="columnheader">Artist</span><span role="columnheader">Social followers</span><span role="columnheader">Follower growth</span><span role="columnheader">Engagement</span><span role="columnheader">Monthly listeners</span><span role="columnheader">7d reach</span></div>
+        ${artistKeys.map((key) => { const a = artists[key]; return `<a class="comparison-row" role="row" href="index.html?artist=${key}"><span role="cell"><img src="${a.image}" alt=""/><strong>${a.name}</strong></span><span role="cell">${a.summary.audience}</span><span role="cell" class="metric-up">${a.summary.socialGrowth}</span><span role="cell">${a.summary.engagement}</span><span role="cell">${a.exact.listeners}</span><span role="cell">${a.summary.reach}</span></a>`; }).join('')}
+      </div>
+    </section>`;
 };
 
-const briefModal = qs('#brief-modal');
-const shareModal = qs('#share-modal');
-const sourcesModal = qs('#sources-modal');
-const commentsModal = qs('#comments-modal');
-const toast = qs('#toast');
-const campaignButton = qs('#campaign-button');
-const campaignMenu = qs('#campaign-menu');
-const artistCoverImage = qs('#artist-cover-image');
+const platformTable = (artist) => `<div class="platform-table" role="table" aria-label="Social platform performance">
+  <div class="platform-row platform-row--head" role="row"><span role="columnheader">Platform</span><span role="columnheader">Followers</span><span role="columnheader">Δ prior 7d</span><span role="columnheader">Engagement</span><span role="columnheader">Reach / views</span><span role="columnheader">Posts</span></div>
+  ${artist.platforms.map(([name, icon, audience, change, engagement, reach, posts]) => `<div class="platform-row" role="row"><span role="cell"><i class="platform-mark platform-mark--${name.toLowerCase()}">${icon}</i><strong>${name}</strong></span><span role="cell">${audience}</span><span role="cell" class="${change.includes('−') ? 'metric-down' : 'metric-up'}">${change}</span><span role="cell">${engagement}</span><span role="cell">${reach}</span><span role="cell">${posts}</span></div>`).join('')}
+</div>`;
 
-artistCoverImage.addEventListener('error', () => {
-  artistCoverImage.hidden = true;
-});
-const savedNotes = {};
-const approvedCampaigns = new Set();
-const learnedCampaigns = new Set();
-let activeArtist = 'kentheman';
+const topPost = (artist, post, index) => `<article class="post-card">
+  <div class="post-visual post-visual--${post.tone}"><img src="${artist.image}" alt="Mock ${post.format} thumbnail for ${artist.name}" style="object-position:${post.position}"/><div class="post-visual-top"><span>${post.platform}</span><small>${post.age}</small></div><div class="post-play" aria-hidden="true">▶</div><div class="post-visual-bottom"><span>${post.format}</span><strong>${post.title}</strong></div></div>
+  <div class="post-data"><div><span>Views</span><strong>${post.views}</strong></div><div><span>Engagement</span><strong>${post.engagement}</strong></div><div><span>Shares</span><strong>${post.shares}</strong></div><div><span>Saves</span><strong>${post.saves}</strong></div></div>
+  ${index === 0 ? '<span class="top-post-label">Top post by views</span>' : ''}
+</article>`;
 
-const outcomePlans = {
-  kentheman: { question: 'Target audience participation · Houston + Atlanta', kpi: 'Creator participation rate', result: '+28% participation', detail: 'Performance is above the prior 72-hour baseline. Recommended status: repeat.' },
-  straykids: { question: 'Localized template adoption · Indonesia + Mexico', kpi: 'Localized template uses', result: '+41% template uses', detail: 'Performance is above the global campaign control. Recommended status: scale.' },
-  mergui: { question: 'New-listener conversion · US + Germany', kpi: 'New-listener save rate', result: '+19% save rate', detail: 'Performance is above the prior discovery baseline. Recommended status: iterate.' }
-};
+const barList = (items) => `<div class="executive-bars">${items.map(([name, value, width]) => `<div><p><span>${name}</span><strong>${value}</strong></p><i><b style="width:${width}%"></b></i></div>`).join('')}</div>`;
 
-const rangeLabel = { 24: '24-hour', 48: '48-hour', 168: '7-day' };
-const periodCopy = { 24: '24 hours', 48: '48 hours', 168: '7 days' };
-const rangeAxisLabels = {
-  24: ['12am', '6am', '12pm', '6pm', 'Now'],
-  48: ['Mon 8am', 'Mon 8pm', 'Tue 8am', 'Tue 8pm', 'Now'],
-  168: ['Wed', 'Fri', 'Sun', 'Tue', 'Now']
-};
-const profileMetricLabels = {
-  monthlyListeners: 'Monthly listeners',
-  instagramFollowers: 'Instagram followers',
-  tiktokFollowers: 'TikTok followers',
-  usStreamsAtd: 'US streams ATD',
-  worldwideStreamsAtd: 'Worldwide streams ATD'
-};
-const currentRange = () => qs('.range-control button.is-selected').dataset.range;
-const setText = (selector, value) => { qs(selector).textContent = value; };
+const alertCard = (alert, index) => `<article class="alert-card alert-card--${alert.level}" data-alert-card>
+  <div class="alert-card-top"><span class="status-chip status-chip--${alert.level}">${alert.label}</span><div><button type="button" data-save-alert aria-label="Save alert">☆</button><button type="button" data-dismiss-alert aria-label="Dismiss alert">×</button></div></div>
+  <h3>${alert.title}</h3><p>${alert.detail}</p>
+  <div class="alert-trigger"><span>Trigger analytics</span><strong>${alert.trigger}</strong></div>
+  <div class="alert-recommendation"><span>Recommended strategy change</span><p>${alert.recommendation}</p></div>
+</article>`;
 
-const copyText = async (value) => {
-  if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(value);
-  const input = document.createElement('textarea');
-  input.value = value;
-  input.style.position = 'fixed';
-  input.style.opacity = '0';
-  document.body.append(input);
-  input.select();
-  document.execCommand('copy');
-  input.remove();
-};
+const renderArtist = (key) => {
+  const artist = artists[key]; activeArtist = key;
+  const view = qs('#artist-view');
+  view.innerHTML = `
+    <a class="back-link" href="index.html"><span aria-hidden="true">←</span> All artists</a>
+    <section class="artist-hero">
+      <div class="artist-hero-image"><img src="${artist.image}" alt="${artist.name}"/><span>${artist.genre}</span></div>
+      <div class="artist-hero-copy"><p class="page-label">${artist.campaign}</p><h1 id="artist-title">${artist.name}</h1><p>${artist.alert.title}. <strong>${artist.alert.change}</strong> ${artist.alert.metric} in the last 48 hours.</p><div class="artist-hero-meta"><span><i></i> Tracking normally</span><span>5 social platforms</span><span>Last sync 8 min ago</span></div></div>
+      ${rangeControl('48', 'artist')}
+    </section>
 
-const buildShareUrl = () => {
-  const campaign = campaigns[activeArtist];
-  const url = new URL('share.html', window.location.href);
-  const slug = `${activeArtist}-${campaign.track.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}-${currentRange()}h`;
-  url.search = '';
-  url.searchParams.set('brief', slug);
-  url.searchParams.set('artist', activeArtist);
-  url.searchParams.set('range', currentRange());
-  return url.href;
-};
+    <nav class="artist-tabs" aria-label="Artist dashboard sections"><a class="is-active" href="#overview">Overview</a><a href="#social">Social</a><a href="#content">Content</a><a href="#audience">Audience</a><a href="#sentiment">Sentiment</a><a href="#alerts">Alerts <span>${artist.alerts.length}</span></a></nav>
 
-const renderShareLink = () => {
-  const shareUrl = buildShareUrl();
-  qs('#share-url').value = shareUrl;
-  qs('#open-share-preview').href = shareUrl;
-};
+    <section id="overview" class="artist-section artist-overview" aria-labelledby="overview-heading">
+      <div class="section-title-row"><div><span class="page-label">Overview</span><h2 id="overview-heading">Performance snapshot</h2></div><span class="data-key"><i></i> Follower, listener, and stream totals supplied · other values illustrative</span></div>
+      <div class="artist-kpi-grid">
+        <article><span>Social followers</span><strong>${artist.summary.audience}</strong><small class="metric-up">${artist.summary.socialGrowth} vs prior 7d</small>${sparkline(artist.histories.audience)}</article>
+        <article><span>Engagement rate</span><strong>${artist.summary.engagement}</strong><small class="metric-up">+0.${key === 'straykids' ? '6' : key === 'mergui' ? '1' : '8'} pts vs prior 7d</small>${sparkline(artist.histories.engagement)}</article>
+        <article><span>Monthly listeners</span><strong>${artist.exact.listeners}</strong><small class="metric-up">${artist.summary.listenerGrowth} vs prior 30d</small>${sparkline(artist.histories.listeners)}</article>
+        <article class="stream-kpi"><span>Streaming · all time</span><div><p><small>United States</small><strong>${artist.exact.usStreams}</strong></p><p><small>Worldwide</small><strong>${artist.exact.worldStreams}</strong></p></div><em>Provided figures</em></article>
+      </div>
 
-const updateDecisionState = () => {
-  const approved = approvedCampaigns.has(activeArtist);
-  const learned = learnedCampaigns.has(activeArtist);
-  const lifecycleItems = qsa('[data-lifecycle]');
+      <div class="headline-alert">
+        <div class="headline-alert-copy"><span class="status-chip status-chip--${artist.alert.level}">${artist.alert.label}</span><h2>${artist.alert.title}</h2><p>${artist.alert.detail}</p><a href="#alerts">Review all alerts <span aria-hidden="true">↓</span></a></div>
+        <div class="headline-alert-chart"><div><span>Pattern mentions</span><strong>${artist.alert.change}</strong><small>vs prior 48h</small></div>${sparkline(artist.series, 'sparkline--large')}<p><span>12am</span><span>Now</span></p></div>
+        <aside><span>Recommended strategy change</span><p>${artist.alert.recommendation}</p><small>Generated from recurrence, velocity, sentiment, and audience concentration.</small></aside>
+      </div>
+    </section>
 
-  lifecycleItems.forEach((item, index) => {
-    item.classList.remove('is-complete', 'is-current');
-    if (learned || index < (approved ? 5 : 3)) item.classList.add('is-complete');
-    if (!learned && index === (approved ? 5 : 3)) item.classList.add('is-current');
-  });
-  if (learned) lifecycleItems.at(-1).classList.add('is-current');
+    <section id="social" class="artist-section" aria-labelledby="social-heading">
+      <div class="section-title-row"><div><span class="page-label">Social</span><h2 id="social-heading">Platform performance</h2></div><p class="section-helper">Followers, engagement, reach, and posting frequency compared with the prior seven days.</p></div>
+      ${platformTable(artist)}
+      <p class="mock-caption">Instagram and TikTok follower totals are supplied. YouTube, X, Facebook, engagement, reach, and posting metrics are presentation mock data.</p>
+      <div class="streaming-strip"><div><i class="platform-mark platform-mark--spotify">S</i><span><small>Streaming performance</small><strong>Spotify for Artists</strong></span></div><dl><div><dt>Monthly listeners</dt><dd>${artist.exact.listeners}</dd></div><div><dt>US streams ATD</dt><dd>${artist.exact.usStreams}</dd></div><div><dt>Worldwide streams ATD</dt><dd>${artist.exact.worldStreams}</dd></div><div><dt>Save rate</dt><dd>${key === 'straykids' ? '12.8%' : key === 'mergui' ? '8.1%' : '10.4%'}</dd></div></dl></div>
+    </section>
 
-  const recordSteps = qsa('li', qs('#state-track'));
-  recordSteps.forEach((step, index) => {
-    step.classList.remove('is-complete', 'is-current');
-    if (learned || index < (approved ? 2 : 1)) step.classList.add('is-complete');
-    if (!learned && index === (approved ? 2 : 1)) step.classList.add('is-current');
-  });
-  if (learned) recordSteps.at(-1).classList.add('is-current');
+    <section id="content" class="artist-section" aria-labelledby="content-heading">
+      <div class="section-title-row"><div><span class="page-label">Content</span><h2 id="content-heading">Top posts and formats</h2></div><p class="section-helper">Ranked by views · last 7 days</p></div>
+      <div class="format-strip">${artist.formats.map(([format, views, engagement, delta]) => `<div><span>${format}</span><strong>${views}</strong><small>avg views · ${engagement} engagement</small><em class="${delta.includes('−') ? 'metric-down' : 'metric-up'}">${delta}</em></div>`).join('')}</div>
+      <div class="post-grid">${artist.posts.map((post, index) => topPost(artist, post, index)).join('')}</div>
+      <p class="mock-caption">Post visuals and performance metrics are presentation mock data; current follower and streaming totals are the supplied figures.</p>
+    </section>
 
-  const status = qs('#decision-status');
-  status.classList.toggle('status-badge--good', approved || learned);
-  status.textContent = learned ? 'Outcome recorded' : approved ? 'Approved · ready to activate' : 'Awaiting approval';
-  setText('#decision-step-copy', learned ? 'Strategist approved · outcome recorded' : approved ? 'Approved by strategist' : 'Waiting on strategist approval');
-  qs('#mock-result').hidden = !learned;
-  qs('#preview-outcome').textContent = learned ? 'Mock result recorded ✓' : 'Preview mock result';
-};
+    <section id="audience" class="artist-section" aria-labelledby="audience-heading">
+      <div class="section-title-row"><div><span class="page-label">Audience</span><h2 id="audience-heading">Who is responding</h2></div><a href="audiences.html">Cross-artist comparison <span aria-hidden="true">→</span></a></div>
+      <div class="audience-grid">
+        <article class="audience-card"><div class="card-heading"><div><span class="page-label">Geography</span><h3>Top countries</h3></div><span>7d</span></div>${barList(artist.audience.countries)}<p class="audience-detail"><span>Top cities</span><strong>${artist.audience.cities}</strong></p></article>
+        <article class="audience-card"><div class="card-heading"><div><span class="page-label">Demographics</span><h3>Age distribution</h3></div><span>72% coverage</span></div>${barList(artist.audience.ages)}<div class="audience-facts"><p><span>Gender</span><strong>${artist.audience.gender}</strong></p><p><span>Fan status</span><strong>${artist.audience.returning}</strong></p></div></article>
+        <article class="audience-card audience-card--overlap"><div class="card-heading"><div><span class="page-label">Portfolio opportunity</span><h3>Audience overlap</h3></div><a href="audiences.html">Open</a></div><p>Shared active audiences can inform creator lists, targeting, and content seeding.</p>${artist.overlap.map(([name, value, detail]) => `<div class="overlap-row"><span><i>${artists[artistKeys.find((k) => artists[k].name === name)]?.initials || name[0]}</i><strong>${name}</strong><small>${detail}</small></span><b>${value}</b></div>`).join('')}</article>
+      </div>
+    </section>
 
-const pointsForSeries = (values, { left, right, top, bottom }, maximum = Math.max(...values)) => {
-  const range = maximum || 1;
-  return values.map((value, index) => ({
-    x: left + ((right - left) * index) / Math.max(values.length - 1, 1),
-    y: bottom - ((bottom - top) * value) / range,
-    value
-  }));
-};
+    <section id="sentiment" class="artist-section" aria-labelledby="sentiment-heading">
+      <div class="section-title-row"><div><span class="page-label">Conversation</span><h2 id="sentiment-heading">Sentiment and recurring themes</h2></div><p class="section-helper">24–48h pattern monitoring across connected platforms.</p></div>
+      <div class="sentiment-grid">
+        <article class="sentiment-card"><div class="sentiment-donut" style="--positive:${artist.sentiment.positive};--neutral:${artist.sentiment.neutral}"><div><strong>${artist.sentiment.positive + artist.sentiment.neutral}%</strong><span>positive / neutral</span></div></div><div class="sentiment-legend"><span><i class="is-positive"></i>Positive <strong>${artist.sentiment.positive}%</strong></span><span><i class="is-neutral"></i>Neutral <strong>${artist.sentiment.neutral}%</strong></span><span><i class="is-negative"></i>Negative <strong>${artist.sentiment.negative}%</strong></span></div></article>
+        <article class="theme-card"><div class="card-heading"><div><span class="page-label">Repeated language</span><h3>Conversation themes</h3></div><span>3,842 comments</span></div>${artist.sentiment.themes.map(([theme, value], index) => `<div><span>${String(index + 1).padStart(2, '0')}</span><strong>${theme}</strong><b>${value}</b></div>`).join('')}</article>
+        <article class="comment-card"><div class="card-heading"><div><span class="page-label">Qualitative context</span><h3>Representative comments</h3></div><button type="button" data-open-comments>Show all</button></div>${artist.sentiment.comments.map((comment, index) => `<blockquote class="${index > 1 ? 'is-extra' : ''}">${comment}<footer>${['TikTok', 'Instagram', 'YouTube'][index]} · ${[2100, 1300, 779][index].toLocaleString()} likes</footer></blockquote>`).join('')}</article>
+      </div>
+    </section>
 
-const smoothPath = (points) => points.reduce((path, point, index) => {
-  if (index === 0) return `M${point.x.toFixed(1)},${point.y.toFixed(1)}`;
-  const previous = points[index - 1];
-  const midpoint = (previous.x + point.x) / 2;
-  return `${path} C${midpoint.toFixed(1)},${previous.y.toFixed(1)} ${midpoint.toFixed(1)},${point.y.toFixed(1)} ${point.x.toFixed(1)},${point.y.toFixed(1)}`;
-}, '');
-
-const renderProfileHistory = (key, campaign) => {
-  qsa('[data-profile-metric]').forEach((card) => {
-    const metricKey = card.dataset.profileMetric;
-    const values = profileHistory[key][metricKey];
-    const svg = qs('.metric-sparkline', card);
-    const bounds = { left: 1.5, right: 118.5, top: 3, bottom: 31 };
-    const minimum = Math.min(...values);
-    const normalized = values.map((value) => value - minimum);
-    const points = pointsForSeries(normalized, bounds);
-    const line = smoothPath(points);
-    const end = points.at(-1);
-    const comparison = values.at(-4);
-    const change = ((values.at(-1) - comparison) / comparison) * 100;
-    const displayChange = `${change >= 0 ? '+' : ''}${change.toFixed(1)}% / 90d`;
-    const changeNode = qs('.metric-change', card);
-
-    qs('.sparkline-line', svg).setAttribute('d', line);
-    qs('.sparkline-area', svg).setAttribute('d', `${line} L${bounds.right},${bounds.bottom} L${bounds.left},${bounds.bottom} Z`);
-    qs('.sparkline-end', svg).setAttribute('cx', end.x);
-    qs('.sparkline-end', svg).setAttribute('cy', end.y);
-    changeNode.textContent = displayChange;
-    changeNode.classList.toggle('is-down', change < 0);
-    svg.setAttribute('aria-label', `${profileMetricLabels[metricKey]} mock monthly history from September 2025 to August 2026; current value ${campaign.profile[metricKey]}; ${displayChange}`);
-  });
-};
-
-const niceChartMaximum = (value) => {
-  const roughStep = value / 4;
-  const magnitude = 10 ** Math.floor(Math.log10(roughStep));
-  const normalized = roughStep / magnitude;
-  const step = (normalized <= 1 ? 1 : normalized <= 2 ? 2 : normalized <= 5 ? 5 : 10) * magnitude;
-  return Math.ceil(value / step) * step;
-};
-
-const renderEvidenceChart = (campaign, signal, range) => {
-  const history = evidenceHistory[activeArtist][range];
-  const bounds = { left: 40, right: 735, top: 25, bottom: 190 };
-  const maximum = niceChartMaximum(Math.max(...history.series, ...history.baseline) * 1.08);
-  const points = pointsForSeries(history.series, bounds, maximum);
-  const baselinePoints = pointsForSeries(history.baseline, bounds, maximum);
-  const line = smoothPath(points);
-  const eventPoint = points[history.eventIndex];
-  const labelX = eventPoint.x > 555 ? eventPoint.x - 174 : eventPoint.x + 10;
-  const yTicks = [maximum, maximum * 2 / 3, maximum / 3, 0].map(Math.round);
-
-  setText('#chart-heading', history.heading);
-  setText('#chart-delta-label', `vs. prior ${periodCopy[range]}`);
-  setText('#chart-delta', history.delta);
-  setText('#chart-title', `${campaign.chart.title} over ${periodCopy[range]}`);
-  setText('#chart-desc', history.description);
-  setText('#event-time', history.time);
-  setText('#event-detail', history.event);
-  setText('#current-pace', `${history.series.at(-1)} / ${history.interval}`);
-  setText('#peak-pace', `${Math.max(...history.series)} / ${history.interval}`);
-  setText('#baseline-lift', signal.multiple);
-  setText('#data-point-count', `${history.series.length} intervals`);
-  setText('#source-tiktok', history.mix[0]);
-  setText('#source-youtube', history.mix[1]);
-  setText('#source-instagram', history.mix[2]);
-  yTicks.forEach((tick, index) => setText(`#axis-y-${index + 1}`, tick));
-  rangeAxisLabels[range].forEach((label, index) => setText(`#axis-x-${index + 1}`, label));
-
-  qs('#chart-actual').setAttribute('d', line);
-  qs('#chart-baseline').setAttribute('d', smoothPath(baselinePoints));
-  qs('#chart-area').setAttribute('d', `${line} L${bounds.right},${bounds.bottom} L${bounds.left},${bounds.bottom} Z`);
-  qs('#chart-points').innerHTML = points.map((point, index) => `<circle cx="${point.x.toFixed(1)}" cy="${point.y.toFixed(1)}" r="2.25"><title>Interval ${index + 1}: ${point.value} mentions</title></circle>`).join('');
-  qs('#event-line').setAttribute('x1', eventPoint.x);
-  qs('#event-line').setAttribute('x2', eventPoint.x);
-  qs('#event-dot').setAttribute('cx', eventPoint.x);
-  qs('#event-dot').setAttribute('cy', eventPoint.y);
-  qs('#event-label').setAttribute('transform', `translate(${labelX.toFixed(1)} 0)`);
+    <section id="alerts" class="artist-section" aria-labelledby="alerts-heading">
+      <div class="section-title-row"><div><span class="page-label">Alerts</span><h2 id="alerts-heading">Signals to review</h2></div><p class="section-helper">Automatic recommendations; final strategy decisions stay with the team.</p></div>
+      <div class="alerts-grid">${artist.alerts.map(alertCard).join('')}</div>
+      <div class="strategy-note"><div><span class="page-label">Internal only</span><h3>Strategy note</h3><p>Capture the cultural context that analytics alone cannot provide.</p></div><div><label class="sr-only" for="strategy-note">Internal strategy note</label><textarea id="strategy-note" rows="4">${artist.note}</textarea><p><span>Not included in artist-facing reports</span><button class="text-action" id="save-note" type="button">Save note</button></p></div></div>
+    </section>`;
 };
 
 const showToast = (title, detail = '') => {
-  qs('strong', toast).textContent = title;
-  qs('small', toast).textContent = detail;
-  toast.classList.add('is-visible');
-  window.clearTimeout(showToast.timer);
-  showToast.timer = window.setTimeout(() => toast.classList.remove('is-visible'), 2800);
+  const toast = qs('#toast'); qs('strong', toast).textContent = title; qs('small', toast).textContent = detail;
+  toast.classList.add('is-visible'); window.clearTimeout(showToast.timer); showToast.timer = window.setTimeout(() => toast.classList.remove('is-visible'), 2800);
 };
 
-const renderSignal = () => {
-  const campaign = campaigns[activeArtist];
-  const range = currentRange();
-  const signal = campaign.ranges[range];
-  qs('#signal-summary').innerHTML = `<strong>${campaign.pattern} · ${signal.count} matches in ${periodCopy[range]}.</strong> Volume is ${signal.multiple} above baseline across TikTok, YouTube, and Instagram.`;
-  setText('#match-count', signal.count);
-  setText('#why-repeats', `${signal.count} / ${range === '168' ? '7d' : `${range}h`}`);
-  setText('#why-velocity', signal.multiple);
-  setText('#threshold-copy', `The pattern met the recurrence and velocity thresholds in ${periodCopy[range]}, with consistent sentiment across ${campaign.platforms} platforms.`);
-  setText('#brief-modal-title', `${campaign.track} · ${rangeLabel[range]} signal brief`);
-  setText('#brief-summary', `${signal.count} matches across TikTok, YouTube, and Instagram in ${periodCopy[range]}. ${campaign.audience.regions} audiences ages ${campaign.audience.age} show the highest concentration.`);
-  renderEvidenceChart(campaign, signal, range);
-  renderShareLink();
+const copyText = async (value) => {
+  if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(value);
+  const input = document.createElement('textarea'); input.value = value; document.body.append(input); input.select(); document.execCommand('copy'); input.remove();
 };
 
-const renderComments = (comments) => {
-  qs('#comments-list').innerHTML = comments.map(([platform, handle, likes, comment, match]) => `<article><div><i class="platform-icon">${platform}</i><strong>${handle}</strong><span>${likes}</span></div><p>${comment}</p><small>${match}</small></article>`).join('');
+const buildShareUrl = () => {
+  const artist = artists[activeArtist]; const url = new URL('share.html', window.location.href);
+  url.searchParams.set('artist', activeArtist); url.searchParams.set('range', '48'); url.searchParams.set('brief', `${activeArtist}-${artist.track.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-report`);
+  return url.href;
 };
 
-const renderBars = (bars) => {
-  qs('#audience-bars').innerHTML = bars.map(([label, value, width]) => `<div class="bar-row"><div><span>${label}</span><strong>${value}</strong></div><div class="bar"><i style="--width: ${width}%"></i></div></div>`).join('');
+const wirePageInteractions = () => {
+  qsa('[data-range]').forEach((button) => button.addEventListener('click', () => {
+    qsa(`[data-range][data-scope="${button.dataset.scope}"]`).forEach((item) => { item.classList.toggle('is-selected', item === button); item.setAttribute('aria-pressed', String(item === button)); });
+    showToast('Reporting window updated', `Showing ${rangeLabels[button.dataset.range]}.`);
+  }));
+  qsa('[data-custom-date]').forEach((button) => button.addEventListener('click', () => showToast('Custom range', 'Date picker is ready for production wiring.')));
+  qsa('[data-save-alert]').forEach((button) => button.addEventListener('click', () => { const saved = button.textContent === '★'; button.textContent = saved ? '☆' : '★'; button.setAttribute('aria-label', saved ? 'Save alert' : 'Remove saved alert'); showToast(saved ? 'Alert removed from saved' : 'Alert saved', 'This demo keeps the signal in the review list.'); }));
+  qsa('[data-dismiss-alert]').forEach((button) => button.addEventListener('click', () => { const card = button.closest('[data-alert-card]'); card.classList.add('is-dismissed'); showToast('Alert dismissed', 'The production version would record this feedback.'); }));
+  qs('[data-open-comments]')?.addEventListener('click', (event) => { qsa('.comment-card .is-extra').forEach((node) => node.classList.toggle('is-revealed')); event.currentTarget.textContent = event.currentTarget.textContent === 'Show all' ? 'Show less' : 'Show all'; });
+  qs('#save-note')?.addEventListener('click', () => { sessionStorage.setItem(`swamp-note-${activeArtist}`, qs('#strategy-note').value); showToast('Strategy note saved', 'Internal note updated for this session.'); });
+  if (activeArtist) { const saved = sessionStorage.getItem(`swamp-note-${activeArtist}`); if (saved) qs('#strategy-note').value = saved; }
 };
 
-const renderCampaign = (key, announce = true) => {
-  if (!campaigns[key]) return;
-  if (campaigns[activeArtist]) savedNotes[activeArtist] = qs('#lens-note').value;
-  activeArtist = key;
-  const campaign = campaigns[key];
-
-  setText('#artist-name', campaign.artist);
-  setText('#artist-cover-fallback', campaign.initials);
-  const artistImage = qs('#artist-cover-image');
-  artistImage.hidden = false;
-  artistImage.src = campaign.image;
-  artistImage.className = `artist-photo artist-photo--${campaign.theme}`;
-  setText('#campaign-name', campaign.campaign);
-  setText('#artist-genre', campaign.profile.genre);
-  setText('#monthly-listeners', campaign.profile.monthlyListeners);
-  setText('#instagram-followers', campaign.profile.instagramFollowers);
-  setText('#tiktok-followers', campaign.profile.tiktokFollowers);
-  setText('#us-streams-atd', campaign.profile.usStreamsAtd);
-  setText('#worldwide-streams-atd', campaign.profile.worldwideStreamsAtd);
-  renderProfileHistory(key, campaign);
-  setText('#signal-confidence', campaign.confidence);
-  setText('#source-count', campaign.sources);
-  setText('#keep-title', campaign.keepTitle);
-  setText('#keep-copy', campaign.keepCopy);
-  setText('#platform-count', campaign.platforms);
-  setText('#sentiment-score', campaign.sentiment);
-  setText('#why-sentiment', campaign.sentiment);
-  setText('#why-coverage', campaign.audience.coverage);
-  setText('#why-platforms', `${campaign.platforms} platforms represented`);
-  setText('#meaning-title', campaign.meaningTitle);
-  setText('#meaning-copy', campaign.meaningCopy);
-  setText('#lead-quote', campaign.quote);
-  setText('#move-title', campaign.moveTitle);
-  qs('#action-list').innerHTML = campaign.actions.map(([when, action]) => `<li><span>${when}</span> ${action}</li>`).join('');
-  setText('#owner-initials', campaign.owner.initials);
-  setText('#owner-name', campaign.owner.name);
-  qs('#audience-lead').innerHTML = `<strong>${campaign.audience.regions} · ages ${campaign.audience.age}</strong> account for <strong>${campaign.audience.share}</strong> of matched posts.`;
-  setText('#coverage-rate', campaign.audience.coverage);
-  renderBars(campaign.audience.bars);
-  qs('#lens-note').value = savedNotes[key] ?? campaign.lens;
-  setText('#brief-artist', `THE SWAMP / ${campaign.artist.toUpperCase()}`);
-  setText('#brief-headline', campaign.briefHeadline);
-  setText('#brief-quote', campaign.quote);
-  setText('#brief-move-title', `${campaign.moveTitle}.`);
-  setText('#brief-actions', campaign.briefActions);
-  setText('#share-preview-title', `${campaign.artist} · ${campaign.track} signal brief`);
-  setText('#decision-record-title', campaign.moveTitle);
-  const outcome = outcomePlans[key];
-  setText('#measurement-question', outcome.question);
-  setText('#primary-kpi', outcome.kpi);
-  setText('#mock-result-primary', outcome.result);
-  setText('#mock-result-copy', outcome.detail);
-  renderComments(campaign.comments);
-  renderSignal();
-
-  const approveButton = qs('#approve-button');
-  approveButton.disabled = approvedCampaigns.has(key);
-  approveButton.textContent = approvedCampaigns.has(key) ? 'Approved ✓' : 'Approve action';
-  setText('#brief-approval-status', approvedCampaigns.has(key) ? 'Approved by Marketing · Evidence available on request' : 'Draft · Strategist approval required · Evidence available on request');
-  updateDecisionState();
-  qsa('[data-artist]', campaignMenu).forEach((item) => {
-    const selected = item.dataset.artist === key;
-    item.setAttribute('aria-current', selected ? 'true' : 'false');
-    qs('i', item).textContent = selected ? '✓' : '';
-  });
-  document.title = `The Swamp — ${campaign.artist} dashboard`;
-  const url = new URL(window.location.href);
-  url.searchParams.set('artist', key);
-  history.replaceState(null, '', url);
-  if (announce) showToast(`${campaign.artist} loaded`, `${campaign.campaign} · illustrative mock`);
-};
-
-const closeCampaignMenu = () => {
-  campaignMenu.hidden = true;
-  campaignButton.setAttribute('aria-expanded', 'false');
-};
-
-campaignButton.addEventListener('click', () => {
-  const opening = campaignMenu.hidden;
-  campaignMenu.hidden = !opening;
-  campaignButton.setAttribute('aria-expanded', String(opening));
-  if (opening) qs('[aria-current="true"]', campaignMenu)?.focus();
-});
-campaignButton.addEventListener('keydown', (event) => {
-  if (event.key === 'ArrowDown') {
-    event.preventDefault();
-    campaignMenu.hidden = false;
-    campaignButton.setAttribute('aria-expanded', 'true');
-    qs('[role="menuitem"]', campaignMenu).focus();
-  }
-});
-qsa('[data-artist]', campaignMenu).forEach((item) => item.addEventListener('click', () => {
-  renderCampaign(item.dataset.artist);
-  closeCampaignMenu();
-  campaignButton.focus();
-}));
-document.addEventListener('click', (event) => {
-  if (!qs('.campaign-picker').contains(event.target)) closeCampaignMenu();
-});
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && !campaignMenu.hidden) {
-    closeCampaignMenu();
-    campaignButton.focus();
-  }
-});
-
-qs('#brief-button').addEventListener('click', () => briefModal.showModal());
-qsa('.modal-close').forEach((button) => button.addEventListener('click', () => briefModal.close()));
-qsa('.share-close').forEach((button) => button.addEventListener('click', () => shareModal.close()));
-qs('#open-sources').addEventListener('click', () => sourcesModal.showModal());
-qsa('.source-close').forEach((button) => button.addEventListener('click', () => sourcesModal.close()));
-qs('#comments-button').addEventListener('click', () => commentsModal.showModal());
-qs('#view-evidence').addEventListener('click', () => commentsModal.showModal());
-qsa('.comments-close').forEach((button) => button.addEventListener('click', () => commentsModal.close()));
-[briefModal, shareModal, sourcesModal, commentsModal].forEach((dialog) => dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); }));
-
-qsa('.range-control button').forEach((button) => {
-  button.addEventListener('click', () => {
-    qsa('.range-control button').forEach((item) => {
-      item.classList.remove('is-selected');
-      item.setAttribute('aria-pressed', 'false');
-    });
-    button.classList.add('is-selected');
-    button.setAttribute('aria-pressed', 'true');
-    renderSignal();
-  });
-});
-
-qs('#approve-button').addEventListener('click', (event) => {
-  approvedCampaigns.add(activeArtist);
-  event.currentTarget.textContent = 'Approved ✓';
-  event.currentTarget.disabled = true;
-  setText('#brief-approval-status', 'Approved by Marketing · Evidence available on request');
-  updateDecisionState();
-  showToast('Decision approved', `${campaigns[activeArtist].owner.name} was notified.`);
-});
-
-qs('#preview-outcome').addEventListener('click', () => {
-  approvedCampaigns.add(activeArtist);
-  learnedCampaigns.add(activeArtist);
-  qs('#approve-button').textContent = 'Approved ✓';
-  qs('#approve-button').disabled = true;
-  setText('#brief-approval-status', 'Approved by Marketing · Evidence available on request');
-  updateDecisionState();
-  showToast('Mock result recorded', 'Campaign status updated.');
-});
-
-qs('#save-note').addEventListener('click', () => {
-  savedNotes[activeArtist] = qs('#lens-note').value;
-  showToast('Strategy note saved', `Added to ${campaigns[activeArtist].artist}’s decision record.`);
-});
-qs('#share-button').addEventListener('click', () => {
-  renderShareLink();
-  shareModal.showModal();
-});
-qs('#copy-share-link').addEventListener('click', async () => {
-  try { await copyText(qs('#share-url').value); showToast('Live-page link copied', 'Open it in a new tab to show the recipient view.'); }
-  catch { showToast('Copy unavailable', 'Select the link and copy it manually.'); }
-});
-qs('#copy-brief').addEventListener('click', async () => {
-  try { await copyText(qs('#brief-content').innerText); showToast('Brief copied', 'Paste it into Google Docs.'); }
-  catch { showToast('Copy unavailable', 'Select the brief text to copy manually.'); }
-});
-
-qs('#download-brief').addEventListener('click', () => {
-  const campaign = campaigns[activeArtist];
-  const range = currentRange();
-  const content = qs('#brief-content').innerHTML;
-  const documentHtml = `<!doctype html><html><head><meta charset="utf-8"><title>${campaign.track} — ${rangeLabel[range]} signal brief</title><style>body{max-width:760px;margin:60px auto;padding:0 24px;color:#181916;font:16px Arial,sans-serif;line-height:1.5}.brief-masthead{display:flex;justify-content:space-between;border-bottom:2px solid;padding-bottom:10px;font-size:11px}.brief-overline{margin-top:36px;color:#b93b2c;font-size:11px;letter-spacing:.1em}.brief-preview h3,h3{font:600 38px Georgia,serif;line-height:1.05}.brief-quote{margin:28px 0;padding:18px;border-left:3px solid #e85e43;background:#f3f0e8;font:italic 20px Georgia,serif}.brief-move{padding:24px;color:white;background:#171713}.brief-move span{color:#c7dc68;font-size:11px}.brief-move strong{display:block;margin:7px 0;font:600 24px Georgia,serif}.brief-footnote{color:#777;font-size:11px}</style></head><body>${content}</body></html>`;
-  const blob = new Blob([documentHtml], { type: 'text/html' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = `${activeArtist}-${rangeLabel[range]}-signal-brief.html`;
-  link.click();
-  URL.revokeObjectURL(link.href);
-  showToast('HTML brief downloaded', 'Client-safe and ready to share.');
-});
-
-const menuButton = qs('#menu-button');
-const mobileMenu = qs('#mobile-menu');
-menuButton.addEventListener('click', () => {
-  const expanded = menuButton.getAttribute('aria-expanded') === 'true';
-  menuButton.setAttribute('aria-expanded', String(!expanded));
-  mobileMenu.hidden = expanded;
-});
-qsa('a', mobileMenu).forEach((link) => link.addEventListener('click', () => {
-  mobileMenu.hidden = true;
-  menuButton.setAttribute('aria-expanded', 'false');
-}));
-
-const visibleArtists = ['kentheman', 'straykids', 'mergui'];
 const requestedArtist = new URL(window.location.href).searchParams.get('artist');
-renderCampaign(visibleArtists.includes(requestedArtist) ? requestedArtist : 'kentheman', false);
+if (requestedArtist && artists[requestedArtist]) {
+  qs('#portfolio-view').hidden = true; qs('#artist-view').hidden = false; renderTopbar(artists[requestedArtist]); renderArtist(requestedArtist);
+  document.title = `The Swamp — ${artists[requestedArtist].name}`;
+} else {
+  renderTopbar(null); renderPortfolio(); document.title = 'The Swamp — Artist portfolio';
+}
+wirePageInteractions();
+
+qs('#report-button').addEventListener('click', () => { showToast('Preparing report', 'Use the print dialog to save a frozen PDF snapshot.'); window.setTimeout(() => window.print(), 450); });
+qs('#share-button').addEventListener('click', () => { const artist = artists[activeArtist]; const url = buildShareUrl(); qs('#share-url').value = url; qs('#open-share-preview').href = url; qs('#share-preview-title').textContent = `${artist.name} · ${artist.track} report`; qs('#share-modal').showModal(); });
+qs('#copy-share-link').addEventListener('click', async () => { try { await copyText(qs('#share-url').value); showToast('Share link copied', 'Open it in a new tab to preview the artist-facing view.'); } catch { showToast('Copy unavailable', 'Select the link and copy it manually.'); } });
+qsa('.dialog-close').forEach((button) => button.addEventListener('click', () => qs('#share-modal').close()));
+qs('#open-sources').addEventListener('click', () => qs('#sources-modal').showModal());
+qsa('.source-close').forEach((button) => button.addEventListener('click', () => qs('#sources-modal').close()));
+qsa('dialog').forEach((dialog) => dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); }));
+
+const menuButton = qs('#menu-button'); const mobileMenu = qs('#mobile-menu');
+menuButton.addEventListener('click', () => { const expanded = menuButton.getAttribute('aria-expanded') === 'true'; menuButton.setAttribute('aria-expanded', String(!expanded)); mobileMenu.hidden = expanded; });
