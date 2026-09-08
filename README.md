@@ -10,6 +10,8 @@ npm run dev
 
 Then open `http://localhost:4173`.
 
+The presentation preview is protected by a static client-side password gate. Use the password supplied by the project owner. Access lasts for the current browser session; add `?lock=1` to any route to show the gate again.
+
 ## Demo path
 
 1. Open **Decision Queue** to review the three highest-priority campaign signals.
@@ -31,7 +33,9 @@ Then open `http://localhost:4173`.
 
 The current artist profile figures are the provided Republic Distro data. The September 2025–August 2026 sparklines, interval-level signal curves, comparison periods, and campaign narratives are clearly labeled illustrative mock data.
 
-The share URLs are functional local previews, not published or access-controlled pages. A production backend should issue signed, revocable, expiring links and keep platform credentials out of browser code.
+The share URLs are functional local previews, not individually token-protected pages. A production backend should issue signed, revocable, expiring links and keep platform credentials out of browser code.
+
+The included password gate is appropriate only for a presentation mock. Because the site is static, it does not replace server-side authentication and should not be used to protect sensitive or production data.
 
 ## Artist image sources
 

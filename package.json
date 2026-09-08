@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 4173",
     "build": "vite build",
-    "check": "node --check app.js && node --check workspace.js && node --check share.js && node --check vite.config.js"
+    "check": "node --check auth.js && node --check app.js && node --check workspace.js && node --check share.js && node --check vite.config.js"
   },
   "devDependencies": {
     "@openai/sites-vite-plugin": "^0.2.0",
