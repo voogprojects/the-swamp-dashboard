@@ -1,9 +1,13 @@
+import kenthemanImage from './assets/artists/kentheman.jpg';
+import strayKidsImage from './assets/artists/stray-kids.jpg';
+import merguiImage from './assets/artists/mergui.jpg';
+
 const qs = (selector, scope = document) => scope.querySelector(selector);
 const qsa = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 
 const artists = {
   kentheman: {
-    name: 'KenTheMan', genre: 'Hip hop', image: 'assets/artists/kentheman.jpg', campaign: 'OMG · release momentum', track: 'OMG', initials: 'KM',
+    name: 'KenTheMan', genre: 'Hip hop', image: kenthemanImage, campaign: 'OMG · release momentum', track: 'OMG', initials: 'KM',
     exact: { listeners: '823,708', instagram: '666K', tiktok: '476K', usStreams: '610.7M', worldStreams: '662M' },
     summary: { audience: '1.14M', socialGrowth: '+3.8%', engagement: '6.8%', listenerGrowth: '+6.2%', reach: '35.1M' },
     histories: {
@@ -34,7 +38,7 @@ const artists = {
     series: [5, 6, 8, 7, 9, 10, 12, 15, 14, 24, 33, 41]
   },
   straykids: {
-    name: 'Stray Kids', genre: 'K-pop', image: 'assets/artists/stray-kids.jpg', campaign: 'THIS & THAT · release campaign', track: 'THIS & THAT', initials: 'SK',
+    name: 'Stray Kids', genre: 'K-pop', image: strayKidsImage, campaign: 'THIS & THAT · release campaign', track: 'THIS & THAT', initials: 'SK',
     exact: { listeners: '10,940,227', instagram: '33.4M', tiktok: '37.6M', usStreams: '5.2B', worldStreams: '29.8B' },
     summary: { audience: '71.0M', socialGrowth: '+2.9%', engagement: '8.4%', listenerGrowth: '+7.5%', reach: '482M' },
     histories: {
@@ -64,7 +68,7 @@ const artists = {
     series: [14, 18, 16, 21, 25, 19, 31, 45, 38, 62, 74, 66]
   },
   mergui: {
-    name: 'Mergui', genre: 'Pop / singer-songwriter', image: 'assets/artists/mergui.jpg', campaign: 'Alien · growth campaign', track: 'Alien', initials: 'M',
+    name: 'Mergui', genre: 'Pop / singer-songwriter', image: merguiImage, campaign: 'Alien · growth campaign', track: 'Alien', initials: 'M',
     exact: { listeners: '426,924', instagram: '436K', tiktok: '336K', usStreams: '32.5M', worldStreams: '244.7M' },
     summary: { audience: '772K', socialGrowth: '+1.7%', engagement: '4.9%', listenerGrowth: '+3.0%', reach: '11.8M' },
     histories: {

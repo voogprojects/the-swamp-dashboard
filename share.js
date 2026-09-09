@@ -1,6 +1,10 @@
+import kenthemanImage from './assets/artists/kentheman.jpg';
+import strayKidsImage from './assets/artists/stray-kids.jpg';
+import merguiImage from './assets/artists/mergui.jpg';
+
 const briefs = {
   kentheman: {
-    artist: 'KenTheMan', track: 'OMG', image: 'assets/artists/kentheman.jpg',
+    artist: 'KenTheMan', track: 'OMG', image: kenthemanImage,
     headline: '“Walk-in confidence” is the leading 48-hour pattern for “OMG.”',
     summary: '286 matches across social platforms. Houston and Atlanta audiences ages 18–24 show the highest concentration.',
     sentiment: '92%', audience: 'Houston + Atlanta · 18–24',
@@ -10,7 +14,7 @@ const briefs = {
     ranges: { 24: ['176 / 24h', '4.0×'], 48: ['286 / 48h', '3.5×'], 168: ['468 / 7d', '2.7×'] }
   },
   straykids: {
-    artist: 'Stray Kids', track: 'THIS & THAT', image: 'assets/artists/stray-kids.jpg',
+    artist: 'Stray Kids', track: 'THIS & THAT', image: strayKidsImage,
     headline: 'Split-screen edits are the leading 48-hour pattern for “THIS & THAT.”',
     summary: '473 matches across social platforms. Indonesia and Mexico audiences ages 13–24 show the highest concentration.',
     sentiment: '94%', audience: 'Indonesia + Mexico · 13–24',
@@ -20,7 +24,7 @@ const briefs = {
     ranges: { 24: ['294 / 24h', '4.4×'], 48: ['473 / 48h', '3.8×'], 168: ['812 / 7d', '3.0×'] }
   },
   mergui: {
-    artist: 'Mergui', track: 'Alien', image: 'assets/artists/mergui.jpg',
+    artist: 'Mergui', track: 'Alien', image: merguiImage,
     headline: '“Beautifully out of place” is the leading 48-hour pattern for “Alien.”',
     summary: '139 matches across social platforms. United States and Germany audiences ages 18–24 show the highest concentration.',
     sentiment: '88%', audience: 'United States + Germany · 18–24',
