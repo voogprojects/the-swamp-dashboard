@@ -483,3 +483,83 @@ footer { border-top-color: #d9d9de; color: #8e8e93; font-family: var(--font); fo
 @media (prefers-reduced-motion: reduce) {
   .button, .approve-button, .lens-meta button, .share-copy, .nav-item, .site-auth, .site-auth__form button { transition: none; }
 }
+
+/* The fixed sidebar reduces usable width well before the mobile breakpoint.
+   These intermediate layouts keep workspace data inside the laptop viewport. */
+@media (max-width: 1300px) and (min-width: 961px) {
+  .brief-item {
+    grid-template-columns: 48px minmax(0, 1.3fr) minmax(128px, .72fr) minmax(84px, auto);
+    gap: 14px;
+    padding-inline: 16px;
+  }
+  .brief-item > :nth-child(4) { display: none; }
+  .brief-item > *, .signal-row > * { min-width: 0; }
+  .brief-actions { min-width: 84px; flex-direction: column; align-items: flex-end; gap: 5px; }
+  .brief-actions .status-badge, .brief-actions .button { white-space: nowrap; }
+
+  .signal-row {
+    grid-template-columns: minmax(220px, 1.25fr) minmax(118px, .7fr) minmax(126px, .72fr) auto;
+    gap: 14px;
+    padding-inline: 16px;
+  }
+  .signal-row > :nth-child(4) { display: none; }
+  .signal-row.signal-row--head > span:nth-child(4) { display: none; }
+
+  .guide-layout { grid-template-columns: 1fr; gap: 28px; }
+  .guide-toc { position: static; }
+  .guide-toc nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .guide-toc a { padding-right: 12px; }
+  .guide-toc a:nth-child(3n + 2), .guide-toc a:nth-child(3n + 3) { padding-left: 12px; border-left: 1px solid #d8d8dd; }
+  .source-matrix, .endpoint-table, .field-table { overflow-x: auto; overscroll-behavior-inline: contain; }
+  .source-matrix-row { min-width: 720px; grid-template-columns: 120px minmax(140px, .8fr) minmax(220px, 1.1fr) 90px; }
+  .source-matrix-row > :last-child { display: block; }
+  .endpoint-row { min-width: 640px; }
+  .field-row { min-width: 700px; }
+}
+
+@media (max-width: 960px) and (min-width: 761px) {
+  .workspace-page { padding-right: 32px; padding-left: 32px; }
+  .workspace-heading { display: block; margin-bottom: 32px; }
+  .workspace-heading-actions { margin-top: 20px; }
+  .workspace-section-head { display: block; }
+  .workspace-section-head p { margin-top: 8px; text-align: left; }
+
+  .metric-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metric-strip > div:nth-child(2) { border-right: 0; }
+  .metric-strip > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+
+  .brief-item { grid-template-columns: 48px minmax(0, 1fr); gap: 8px 14px; }
+  .brief-item > :nth-child(3), .brief-item > :nth-child(4) { display: none; }
+  .brief-title { min-width: 0; }
+  .brief-title strong, .brief-title span { overflow-wrap: anywhere; }
+  .brief-actions { grid-column: 2; min-width: 0; flex-direction: row; justify-content: flex-start; }
+
+  .signal-row, .signal-row.signal-row--head { grid-template-columns: minmax(0, 1fr) auto; gap: 14px; }
+  .signal-row.signal-row--head > span { display: none; }
+  .signal-row.signal-row--head > span:first-child, .signal-row.signal-row--head > span:last-child { display: block; }
+  .signal-row > :nth-child(2), .signal-row > :nth-child(3), .signal-row > :nth-child(4) { display: none; }
+
+  .audience-feature { grid-template-columns: 1fr; }
+  .audience-feature-copy { border-right: 0; border-bottom: 1px solid var(--line); }
+  .market-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .market-card:nth-child(2) { border-right: 0; }
+  .market-card:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .market-card:last-child { grid-column: 1 / -1; }
+
+  .brief-callout { grid-template-columns: 1fr; gap: 24px; }
+  .brief-callout > div:last-child { align-items: flex-start; }
+
+  .handoff-banner { grid-template-columns: 1fr; }
+  .handoff-banner aside { padding: 20px 0 0; border-top: 1px solid #515157; border-left: 0; }
+  .guide-layout { grid-template-columns: 1fr; gap: 28px; }
+  .guide-toc { position: static; }
+  .guide-toc nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .guide-toc a:nth-child(odd) { padding-right: 12px; }
+  .guide-toc a:nth-child(even) { padding-left: 12px; border-left: 1px solid #d8d8dd; }
+  .source-matrix, .endpoint-table, .field-table { overflow-x: auto; overscroll-behavior-inline: contain; }
+  .source-matrix-row { min-width: 700px; grid-template-columns: 130px 160px 260px 100px; }
+  .source-matrix-row > :last-child { display: block; }
+  .endpoint-row { min-width: 640px; }
+  .field-row { min-width: 700px; }
+  .implementation-flow { scrollbar-width: thin; }
+}
