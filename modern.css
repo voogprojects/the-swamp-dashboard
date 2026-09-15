@@ -315,7 +315,16 @@ footer { border-top-color: #d9d9de; color: #8e8e93; font-family: var(--font); fo
 .toast > span { color: #fff; background: #34c759; }
 .share-link-field input { border: 1px solid #d2d2d7; border-radius: 12px 0 0 12px; background: #fff; font-family: var(--mono); }
 .share-link-field .button { border-radius: 0 12px 12px 0; }
-.share-visibility { overflow: hidden; border-radius: 14px; background: #e5e5ea; }
+.share-password-option { overflow: hidden; border-color: #dedee3; border-radius: 16px; }
+.share-password-icon { color: #606067; background: #ededf1; }
+.share-password-copy strong { font-size: 13px; font-weight: 650; }
+.share-password-copy small { color: #7d7d83; font-size: 11px; }
+.share-password-fields { border-top-color: #e5e5ea; }
+.share-password-fields label { font-size: 11px; font-weight: 650; }
+.share-password-input input { border-color: #c7c7cc; border-radius: 11px 0 0 11px; font-size: 14px; outline: none; }
+.share-password-input input:focus { z-index: 1; border-color: var(--blue); box-shadow: 0 0 0 3px rgb(0 113 227 / 12%); }
+.share-password-input button { border-color: #c7c7cc; border-radius: 0 11px 11px 0; background: #f5f5f7; font-size: 11px; }
+.share-password-fields > small, .share-demo-note { font-size: 10px; }
 
 /* Supporting workspaces */
 .workspace-page { max-width: 1500px; padding: 58px clamp(28px, 4.5vw, 72px) 80px; }
@@ -462,6 +471,7 @@ footer { border-top-color: #d9d9de; color: #8e8e93; font-family: var(--font); fo
   .modal { border-radius: 22px; }
   .share-link-field input { border-radius: 12px 12px 0 0; }
   .share-link-field .button { border-radius: 0 0 12px 12px; }
+  .share-password-fields { padding-left: 15px; }
   .workspace-page { padding: 38px 15px 60px; }
   .workspace-heading h1 { font-size: 40px; }
   .signal-row.signal-row--head > span { display: none; }

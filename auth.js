@@ -50,6 +50,9 @@ const unlockPage = (gate) => {
 
 const renderGate = () => {
   const params = new URL(window.location.href).searchParams;
+  const isProtectedShare = window.location.pathname.endsWith('/share.html') && params.get('protected') === '1' && params.has('salt') && params.has('access');
+  if (isProtectedShare) return;
+
   if (params.get('lock') === '1') {
     clearAccess();
     params.delete('lock');

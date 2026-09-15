@@ -388,6 +388,78 @@ const buildShareUrl = () => {
   return url.href;
 };
 
+const hashSharePassword = async (password, salt) => {
+  if (!window.crypto?.subtle) throw new Error('Password protection is unavailable in this browser.');
+  const bytes = new TextEncoder().encode(`${salt}:${password}`);
+  const digest = await window.crypto.subtle.digest('SHA-256', bytes);
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+};
+
+const createShareSalt = () => {
+  const bytes = new Uint8Array(12);
+  window.crypto.getRandomValues(bytes);
+  return [...bytes].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+};
+
+let shareBaseUrl = '';
+let shareSalt = '';
+let sharePasswordRevision = 0;
+
+const setShareActionsReady = (ready) => {
+  const copyButton = qs('#copy-share-link');
+  const previewLink = qs('#open-share-preview');
+  copyButton.disabled = !ready;
+  previewLink.classList.toggle('is-disabled', !ready);
+  previewLink.setAttribute('aria-disabled', String(!ready));
+};
+
+const updateProtectedShareUrl = async (showError = false) => {
+  const enabled = qs('#share-password-enabled').checked;
+  const passwordInput = qs('#share-password');
+  const help = qs('#share-password-help');
+  const revision = ++sharePasswordRevision;
+
+  if (!enabled) {
+    qs('#share-url').value = shareBaseUrl;
+    qs('#open-share-preview').href = shareBaseUrl;
+    passwordInput.removeAttribute('aria-invalid');
+    help.classList.remove('is-error');
+    help.textContent = 'Viewers will enter this password before the report opens.';
+    setShareActionsReady(true);
+    return true;
+  }
+
+  if (passwordInput.value.length < 6) {
+    setShareActionsReady(false);
+    passwordInput.toggleAttribute('aria-invalid', showError);
+    help.classList.toggle('is-error', showError);
+    help.textContent = showError ? 'Use at least 6 characters to protect this link.' : 'Viewers will enter this password before the report opens.';
+    return false;
+  }
+
+  setShareActionsReady(false);
+  try {
+    const url = new URL(shareBaseUrl);
+    const accessHash = await hashSharePassword(passwordInput.value, shareSalt);
+    if (revision !== sharePasswordRevision) return false;
+    url.searchParams.set('protected', '1');
+    url.searchParams.set('salt', shareSalt);
+    url.searchParams.set('access', accessHash);
+    qs('#share-url').value = url.href;
+    qs('#open-share-preview').href = url.href;
+    passwordInput.removeAttribute('aria-invalid');
+    help.classList.remove('is-error');
+    help.textContent = 'Protection is on. Share the password separately.';
+    setShareActionsReady(true);
+    return true;
+  } catch (error) {
+    help.classList.add('is-error');
+    help.textContent = error.message;
+    setShareActionsReady(false);
+    return false;
+  }
+};
+
 const wirePageInteractions = () => {
   const setActiveArtistTab = (activeLink) => qsa('.artist-tabs a').forEach((link) => link.classList.toggle('is-active', link === activeLink));
   qsa('.artist-tabs a').forEach((link) => link.addEventListener('click', () => setActiveArtistTab(link)));
@@ -418,8 +490,60 @@ if (requestedArtist && artists[requestedArtist]) {
 wirePageInteractions();
 
 qs('#report-button').addEventListener('click', () => { showToast('Preparing report', 'Use the print dialog to save a frozen PDF snapshot.'); window.setTimeout(() => window.print(), 450); });
-qs('#share-button').addEventListener('click', () => { const artist = artists[activeArtist]; const url = buildShareUrl(); qs('#share-url').value = url; qs('#open-share-preview').href = url; qs('#share-preview-title').textContent = `${artist.name} · ${artist.track} report`; qs('#share-modal').showModal(); });
-qs('#copy-share-link').addEventListener('click', async () => { try { await copyText(qs('#share-url').value); showToast('Share link copied', 'Open it in a new tab to preview the artist-facing view.'); } catch { showToast('Copy unavailable', 'Select the link and copy it manually.'); } });
+qs('#share-button').addEventListener('click', () => {
+  const artist = artists[activeArtist];
+  sharePasswordRevision += 1;
+  shareBaseUrl = buildShareUrl();
+  shareSalt = createShareSalt();
+  qs('#share-url').value = shareBaseUrl;
+  qs('#open-share-preview').href = shareBaseUrl;
+  qs('#share-preview-title').textContent = `${artist.name} · ${artist.track}`;
+  qs('#share-password-enabled').checked = false;
+  qs('#share-password-enabled').setAttribute('aria-expanded', 'false');
+  qs('#share-password-fields').hidden = true;
+  qs('#share-password').value = '';
+  qs('#share-password').type = 'password';
+  qs('#share-password').removeAttribute('aria-invalid');
+  qs('#toggle-share-password').textContent = 'Show';
+  qs('#toggle-share-password').setAttribute('aria-label', 'Show password');
+  qs('#share-password-help').textContent = 'Viewers will enter this password before the report opens.';
+  qs('#share-password-help').classList.remove('is-error');
+  setShareActionsReady(true);
+  qs('#share-modal').showModal();
+});
+qs('#share-password-enabled').addEventListener('change', async (event) => {
+  const isEnabled = event.currentTarget.checked;
+  qs('#share-password-fields').hidden = !isEnabled;
+  event.currentTarget.setAttribute('aria-expanded', String(isEnabled));
+  if (isEnabled) {
+    shareSalt = createShareSalt();
+    window.setTimeout(() => qs('#share-password').focus(), 0);
+  }
+  await updateProtectedShareUrl();
+});
+qs('#share-password').addEventListener('input', () => updateProtectedShareUrl());
+qs('#share-password').addEventListener('blur', () => {
+  if (qs('#share-password-enabled').checked && qs('#share-password').value) updateProtectedShareUrl(true);
+});
+qs('#toggle-share-password').addEventListener('click', (event) => {
+  const passwordInput = qs('#share-password');
+  const reveal = passwordInput.type === 'password';
+  passwordInput.type = reveal ? 'text' : 'password';
+  event.currentTarget.textContent = reveal ? 'Hide' : 'Show';
+  event.currentTarget.setAttribute('aria-label', reveal ? 'Hide password' : 'Show password');
+  passwordInput.focus();
+});
+qs('#copy-share-link').addEventListener('click', async () => {
+  if (!await updateProtectedShareUrl(true)) { qs('#share-password').focus(); return; }
+  try { await copyText(qs('#share-url').value); showToast('Share link copied', qs('#share-password-enabled').checked ? 'Send the password separately.' : 'The artist-facing report is ready to share.'); } catch { showToast('Copy unavailable', 'Select the link and copy it manually.'); }
+});
+qs('#open-share-preview').addEventListener('click', (event) => {
+  if (event.currentTarget.getAttribute('aria-disabled') === 'true') {
+    event.preventDefault();
+    updateProtectedShareUrl(true);
+    qs('#share-password').focus();
+  }
+});
 qsa('.dialog-close').forEach((button) => button.addEventListener('click', () => qs('#share-modal').close()));
 qs('#open-sources').addEventListener('click', () => qs('#sources-modal').showModal());
 qsa('.source-close').forEach((button) => button.addEventListener('click', () => qs('#sources-modal').close()));

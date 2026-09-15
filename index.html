@@ -89,24 +89,31 @@
 
     <dialog class="modal share-modal" id="share-modal" aria-labelledby="share-modal-title">
       <div class="modal-head">
-        <div><span class="eyebrow">Artist-facing view</span><h2 id="share-modal-title">Share report</h2></div>
+        <div><span class="eyebrow">Artist-facing view</span><h2 id="share-modal-title">Share artist report</h2></div>
         <button class="icon-button dialog-close" type="button" aria-label="Close sharing options">×</button>
       </div>
       <div class="share-builder">
         <div class="share-builder-summary">
-          <span class="mock-label">Demo link</span>
           <h3 id="share-preview-title">Artist report</h3>
-          <p>This live page includes the leading signal, audience highlights, recommendation, and review metric. Internal notes and raw comments stay private.</p>
+          <p>This link opens an artist-facing report. Internal notes and raw comments stay private.</p>
         </div>
         <div class="share-link-field">
-          <label for="share-url">Custom shareable link</label>
+          <label for="share-url">Shareable site link</label>
           <div><input id="share-url" type="url" readonly value="" /><button class="button button--primary" id="copy-share-link" type="button">Copy link</button></div>
-          <small>Demo only. Production links should use signed, expiring access tokens.</small>
         </div>
-        <div class="share-visibility" aria-label="Shared report visibility">
-          <div><span>Included</span><strong>Signal · audience · recommendation · review metric</strong></div>
-          <div><span>Internal</span><strong>Raw comments · strategy notes · source credentials</strong></div>
+        <div class="share-password-option">
+          <div class="share-password-toggle">
+            <span class="share-password-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+            <span class="share-password-copy"><strong>Password protection</strong><small>Require a password to open this link.</small></span>
+            <label class="toggle-switch" for="share-password-enabled"><span class="sr-only">Require a password</span><input id="share-password-enabled" type="checkbox" aria-controls="share-password-fields" aria-expanded="false" /><i aria-hidden="true"></i></label>
+          </div>
+          <div class="share-password-fields" id="share-password-fields" hidden>
+            <label for="share-password">Set a password</label>
+            <div class="share-password-input"><input id="share-password" type="password" minlength="6" autocomplete="new-password" spellcheck="false" placeholder="At least 6 characters" aria-describedby="share-password-help" /><button id="toggle-share-password" type="button" aria-label="Show password">Show</button></div>
+            <small id="share-password-help">Viewers will enter this password before the report opens.</small>
+          </div>
         </div>
+        <p class="share-demo-note">Prototype protection only. Production links should validate passwords on the server.</p>
       </div>
       <div class="modal-actions">
         <button class="button button--quiet dialog-close" type="button">Cancel</button>

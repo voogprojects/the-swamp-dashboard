@@ -40,6 +40,93 @@ const artistKey = params.get('artist') || 'kentheman';
 const range = ['24', '48', '168'].includes(params.get('range')) ? params.get('range') : '48';
 const brief = briefs[artistKey];
 
+const hashSharePassword = async (password, salt) => {
+  if (!window.crypto?.subtle) throw new Error('Secure password checks are unavailable.');
+  const bytes = new TextEncoder().encode(`${salt}:${password}`);
+  const digest = await window.crypto.subtle.digest('SHA-256', bytes);
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+};
+
+const renderSharePasswordGate = () => {
+  const salt = params.get('salt');
+  const accessHash = params.get('access');
+  if (params.get('protected') !== '1' || !salt || !accessHash) return;
+
+  const storageKey = `swamp-share-access-${accessHash}`;
+  try {
+    if (window.sessionStorage.getItem(storageKey) === 'granted') {
+      document.documentElement.classList.remove('auth-pending');
+      return;
+    }
+  } catch {
+    // Continue to the password gate when storage is unavailable.
+  }
+
+  document.body.insertAdjacentHTML('afterbegin', `
+    <div class="site-auth" data-share-auth role="dialog" aria-modal="true" aria-labelledby="share-auth-title" aria-describedby="share-auth-description">
+      <section class="site-auth__card">
+        <div class="site-auth__brand" aria-label="The Swamp">
+          <svg class="brand-mark" aria-hidden="true" viewBox="0 0 32 28"><path class="reed" d="M9 20V8m10 12V5m7 15V11"/><rect class="cattail" x="7" y="3" width="4" height="7" rx="2"/><rect class="cattail" x="17" y="0" width="4" height="7" rx="2"/><rect class="cattail" x="24" y="7" width="4" height="6" rx="2"/><path class="water" d="M2 21c4-2 8-2 12 0s8 2 16 0M5 25c3-1.5 6-1.5 9 0s6 1.5 13 0"/></svg>
+          <strong>The Swamp</strong>
+        </div>
+        <div class="site-auth__heading">
+          <span>Password protected</span>
+          <h1 id="share-auth-title">Open artist report</h1>
+          <p id="share-auth-description">Enter the password shared with you to view this report.</p>
+        </div>
+        <form class="site-auth__form" data-share-auth-form novalidate>
+          <label for="share-auth-password">Password</label>
+          <input id="share-auth-password" name="password" type="password" autocomplete="current-password" spellcheck="false" required />
+          <p class="site-auth__error" data-share-auth-error aria-live="polite"></p>
+          <button type="submit">Open report</button>
+        </form>
+        <p class="site-auth__meta">Shared securely by Campaign Marketing</p>
+      </section>
+    </div>
+  `);
+
+  const gate = document.querySelector('[data-share-auth]');
+  const form = document.querySelector('[data-share-auth-form]');
+  const input = document.querySelector('#share-auth-password');
+  const error = document.querySelector('[data-share-auth-error]');
+  const button = form.querySelector('button');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    error.textContent = '';
+    input.removeAttribute('aria-invalid');
+    button.disabled = true;
+    button.textContent = 'Checking…';
+
+    try {
+      if (await hashSharePassword(input.value, salt) !== accessHash) {
+        input.setAttribute('aria-invalid', 'true');
+        error.textContent = 'That password does not match. Try again.';
+        input.select();
+        return;
+      }
+      try { window.sessionStorage.setItem(storageKey, 'granted'); } catch { /* Keep access for the current page. */ }
+      document.documentElement.classList.remove('auth-pending');
+      gate.classList.add('is-unlocking');
+      window.setTimeout(() => {
+        gate.remove();
+        const report = document.querySelector('#shared-brief');
+        report?.setAttribute('tabindex', '-1');
+        report?.focus({ preventScroll: true });
+      }, 180);
+    } catch (authError) {
+      error.textContent = authError.message;
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Open report';
+    }
+  });
+
+  window.setTimeout(() => input.focus(), 0);
+};
+
+renderSharePasswordGate();
+
 const setText = (selector, value) => { document.querySelector(selector).textContent = value; };
 
 if (!brief) {
@@ -67,6 +154,8 @@ if (!brief) {
   document.querySelector('#back-to-workspace').href = `index.html?artist=${artistKey}`;
   document.title = `${brief.artist} · ${brief.track} artist report`;
 }
+
+if (params.get('protected') === '1') document.querySelector('.share-demo-badge').textContent = 'Password protected';
 
 document.querySelector('#copy-public-link').addEventListener('click', async (event) => {
   try {
