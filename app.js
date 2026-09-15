@@ -26,10 +26,10 @@ const artists = {
       ['YouTube', 'Y', '184K', '+2.2%', '6.1%', '6.4M', '4'], ['X', 'X', '142K', '+0.4%', '2.8%', '3.1M', '9'], ['Facebook', 'F', '219K', '+0.2%', '1.9%', '1.7M', '5']
     ],
     platformInsight: {
-      title: 'TikTok is converting a smaller audience into significantly more traction',
-      detail: 'Despite having 29% fewer followers than Instagram, TikTok generated 2.7× the reach and 2.2× the engagement rate this week. The entrance-video trend is concentrating with ages 18–24 in Houston and Atlanta.',
+      title: 'TikTok is getting much more traction from a smaller audience',
+      detail: 'TikTok has 29% fewer followers than Instagram, but it generated 2.7× the reach and more than twice the engagement rate this week. Most of that activity came from 18–24-year-olds in Houston and Atlanta who responded to the entrance videos.',
       metrics: [['TikTok engagement', '13.2%'], ['vs Instagram', '2.2× higher'], ['TikTok reach', '34.6M']],
-      action: 'Put two of the next three short-form drops—and the first Houston/Atlanta paid test—on TikTok. Recut the winner for Reels instead of building Instagram-first.',
+      action: 'Run two of the next three short-form posts on TikTok. Put the first Houston and Atlanta paid test there too, then turn the best performer into a Reel.',
       sources: 'platform performance, content matching, and audience geography'
     },
     formats: [['TikTok video', '11.4M', '13.2%', '+86%'], ['Instagram Reel', '3.4M', '5.9%', '+18%'], ['YouTube Short', '2.1M', '6.1%', '+27%'], ['Carousel', '814K', '4.2%', '−6%']],
@@ -40,7 +40,7 @@ const artists = {
     ],
     audience: { countries: [['United States', '62%', 100], ['Canada', '8%', 41], ['United Kingdom', '7%', 36], ['Germany', '4%', 25]], cities: 'Houston · Atlanta · Dallas · Chicago', ages: [['18–24', '46%', 100], ['25–34', '31%', 67], ['13–17', '12%', 26], ['35–44', '8%', 17]], gender: '68% women · 29% men · 3% self-described', returning: '57% returning · 43% new' },
     overlap: [['Mergui', '18%', 'Pop discovery + ages 18–24'], ['Stray Kids', '12%', 'High-engagement short-form viewers']],
-    sentiment: { positive: 78, neutral: 14, negative: 8, themes: [['Confidence', '34%'], ['Entrance / reveal', '27%'], ['Houston pride', '18%'], ['Overexposure', '8%']], comments: ['“Put this on before you walk in like the room was waiting for you.”', '“Houston confidence needs its own volume setting.”', '“I’ve heard this hook all day—but it still works.”'] },
+    sentiment: { positive: 78, neutral: 14, negative: 8, themes: [['Confidence', '34%'], ['Entrance / reveal', '27%'], ['Houston pride', '18%'], ['Overexposure', '8%']], comments: ['“Put this on before you walk in like the room was waiting for you.”', '“Houston confidence needs its own volume setting.”', '“I’ve heard this hook all day, but it still works.”'] },
     note: 'The energy is confident and communal. Keep the execution rooted in personality and regional culture; avoid polishing it into a generic empowerment trend.',
     series: [5, 6, 8, 7, 9, 10, 12, 15, 14, 24, 33, 41]
   },
@@ -63,10 +63,10 @@ const artists = {
       ['YouTube', 'Y', '21.2M', '+2.4%', '8.3%', '198M', '8'], ['X', 'X', '11.1M', '+1.1%', '4.6%', '82M', '18'], ['Facebook', 'F', '6.7M', '+0.6%', '3.2%', '31M', '6']
     ],
     platformInsight: {
-      title: 'Instagram Reels are delivering more value per post than TikTok',
-      detail: 'Reels produced a 54% higher engagement rate and 2.4× more reach per post, even with a smaller follower base. Visual reveal posts are also earning the strongest save rate in Mexico and Indonesia.',
+      title: 'Instagram Reels are doing more with each post than TikTok',
+      detail: 'Instagram has fewer followers than TikTok, but Reels earned a 54% higher engagement rate and 2.4× more reach per post. The visual reveals also got the most saves in Mexico and Indonesia.',
       metrics: [['Instagram engagement', '12.3%'], ['vs TikTok', '54% higher'], ['Reach per Reel', '34.7M']],
-      action: 'Lead the next visual reveal on Instagram, then use TikTok for the editable fan-participation version. Localize both captions for Mexico and Indonesia.',
+      action: 'Launch the next visual reveal on Instagram. Follow it with an editable TikTok version for fan participation, and localize both captions for Mexico and Indonesia.',
       sources: 'platform performance, post efficiency, and market-level saves'
     },
     formats: [['Instagram Reel', '46.2M', '12.3%', '+58%'], ['TikTok video', '36.4M', '8.0%', '+24%'], ['YouTube Short', '29.1M', '8.3%', '+34%'], ['Carousel', '8.2M', '5.7%', '+9%']],
@@ -100,10 +100,10 @@ const artists = {
       ['YouTube', 'Y', '97K', '+1.1%', '4.4%', '1.9M', '3'], ['X', 'X', '58K', '+0.2%', '2.1%', '640K', '5'], ['Facebook', 'F', '122K', '−0.1%', '1.6%', '410K', '3']
     ],
     platformInsight: {
-      title: 'Instagram is the clearest discovery engine for “Alien” right now',
-      detail: 'Reels delivered 2.0× TikTok’s engagement rate and 3.1× its total reach with fewer posts. The strongest saves are coming from intimate relocation stories, not polished performance clips.',
+      title: 'Instagram is where people are finding “Alien” right now',
+      detail: 'Reels reached 3.1× more people than TikTok and had twice the engagement rate, even with fewer posts. The strongest saves came from personal relocation stories rather than polished performance clips.',
       metrics: [['Instagram engagement', '9.4%'], ['vs TikTok', '2.0× higher'], ['Instagram reach', '12.8M']],
-      action: 'Lead the next “Alien” story on Reels and keep the personal first-day-in-a-new-city framing. Use TikTok for cutdowns after the Instagram concept proves out.',
+      action: 'Post the next “Alien” story on Reels and keep the first-day-in-a-new-city angle. If it performs, use the strongest moments as TikTok cutdowns.',
       sources: 'platform performance, format saves, and conversation themes'
     },
     formats: [['Instagram Reel', '3.8M', '9.4%', '+71%'], ['TikTok video', '1.0M', '4.7%', '−4%'], ['YouTube Short', '684K', '4.4%', '+8%'], ['Static post', '216K', '3.0%', '−14%']],
@@ -208,12 +208,12 @@ const platformAIInsight = (artist) => {
   const insightId = `platform-insight-${artist.initials.toLowerCase()}`;
   return `<aside class="platform-ai-insight" aria-labelledby="${insightId}">
     <div class="platform-ai-copy">
-      <header><span class="platform-ai-mark" aria-hidden="true">✦</span><div><span>AI-powered insight</span><small>Illustrative synthesis</small></div><em><i></i>High confidence</em></header>
+      <header><span class="platform-ai-mark" aria-hidden="true">✦</span><div><span>AI-powered insight</span><small>Mock analysis</small></div><em><i></i>High confidence</em></header>
       <h3 id="${insightId}">${artist.platformInsight.title}</h3>
       <p>${artist.platformInsight.detail}</p>
       <div class="platform-ai-metrics" aria-label="Evidence behind this insight">${artist.platformInsight.metrics.map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join('')}</div>
     </div>
-    <div class="platform-ai-action"><span>Recommended move</span><p>${artist.platformInsight.action}</p><small>Connected from ${artist.platformInsight.sources}.</small></div>
+    <div class="platform-ai-action"><span>Suggested next step</span><p>${artist.platformInsight.action}</p><small>Why this surfaced: ${artist.platformInsight.sources}.</small></div>
   </aside>`;
 };
 
@@ -234,56 +234,56 @@ const alertCard = (alert, index) => `<article class="alert-card alert-card--${al
 
 const kenDecisionConnections = [
   {
-    type: 'Content → streaming',
+    type: 'Content and streaming',
     confidence: 'Medium confidence',
     level: 'medium',
-    title: 'Recent long-form video was followed by a 3.1% spike in daily “OMG” streams',
-    meaning: 'The lift began within six hours of the YouTube premiere and was strongest among viewers who watched past the first minute. The timing suggests the story-led video helped convert interest into listening.',
+    title: 'A recent long-form video was followed by a 3.1% lift in daily “OMG” streams',
+    meaning: 'Streams started to rise within six hours of the YouTube premiere. The biggest increase came from viewers who watched for more than a minute, which suggests the story helped move people from watching to listening.',
     evidence: [
       ['YouTube premiere', '182K qualified views'],
       ['Tracked song clicks', '+14.6% vs baseline'],
       ['Spotify daily streams', '+3.1% in 36h']
     ],
-    action: 'Lean into “OMG” with two short cutdowns from the long-form story, each ending on a direct listen prompt.',
+    action: 'Cut two short clips from the long-form video and end each one with a direct prompt to listen to “OMG.”',
     sources: ['YouTube Analytics', 'Smart-link clicks', 'Spotify for Artists']
   },
   {
-    type: 'Creative → audience growth',
+    type: 'Creative and audience growth',
     confidence: 'High confidence',
     level: 'high',
-    title: 'Entrance edits are turning attention into new followers—not just views',
-    meaning: 'The walk-in format is outperforming KenTheMan’s normal content baseline and the lift carries through to profile visits and follows, especially in Houston and Atlanta.',
+    title: 'Entrance edits are bringing in new followers',
+    meaning: 'The walk-in format is beating KenTheMan’s usual content baseline. People are also visiting her profile and following after they watch, especially in Houston and Atlanta.',
     evidence: [
       ['Matched posts', '3.5× view baseline'],
       ['Profile visits', '+18% after exposure'],
       ['TikTok followers', '+5.5% in 7d']
     ],
-    action: 'Make the entrance reveal the opening beat of the next three posts and seed the format with Houston and Atlanta creators first.',
+    action: 'Open the next three posts with the entrance reveal. Start with creators in Houston and Atlanta, where the response is already strongest.',
     sources: ['TikTok Business', 'Content matching', 'Audience geography']
   },
   {
-    type: 'Cross-platform diagnosis',
+    type: 'Instagram vs. TikTok',
     confidence: 'High confidence',
     level: 'high',
-    title: 'Instagram’s slowdown looks like a packaging issue, not song fatigue',
-    meaning: 'Reach is down, but saves and positive conversation remain above baseline while the same concept is still accelerating on TikTok. The creative idea is holding; the Reel opening is the likely weak point.',
+    title: 'The Instagram slowdown points to the edit, not the song',
+    meaning: 'Instagram reach fell, but saves and positive comments are still above the usual baseline. The same idea is growing on TikTok, so the first few seconds of the Reel are probably the issue.',
     evidence: [
       ['Instagram reach', '−8% vs prior 7d'],
       ['Instagram saves', '+11% vs baseline'],
       ['Positive / neutral', '92% of comments']
     ],
-    action: 'Keep the concept, recut the Reel to 12 seconds, and reveal the walk-in moment inside the first two seconds.',
+    action: 'Keep the concept, cut the Reel to 12 seconds, and show the walk-in moment within the first two seconds.',
     sources: ['Instagram Insights', 'TikTok Business', 'Comment sentiment']
   }
 ];
 
 const renderDecisionConnections = () => `<section id="decisions" class="artist-section decision-connections" aria-labelledby="decisions-heading">
   <div class="section-title-row decision-connections-heading">
-    <div><span class="page-label">Decision intelligence</span><h2 id="decisions-heading">What the data means—and what to do next</h2></div>
-    <p class="section-helper">Illustrative connections across content, audience, and streaming data. Directional signals, not proof of causation.</p>
+    <div><span class="page-label">Connected insights</span><h2 id="decisions-heading">What the numbers suggest</h2></div>
+    <p class="section-helper">These examples pull together content, audience, and streaming performance. They are a starting point for a decision, not proof that one thing caused another.</p>
   </div>
   <div class="decision-context" aria-label="Context used to prioritize these insights">
-    <span>Backend context applied</span>
+    <span>Context used for these recommendations</span>
     <ul><li>Priority track: OMG</li><li>Focus markets: Houston + Atlanta</li><li>Decision window: next 72h</li></ul>
   </div>
   <div class="connection-grid">
@@ -294,11 +294,11 @@ const renderDecisionConnections = () => `<section id="decisions" class="artist-s
         ${insight.evidence.map(([label, value], index) => `<div><span>${label}</span><strong>${value}</strong></div>${index < insight.evidence.length - 1 ? '<i aria-hidden="true">→</i>' : ''}`).join('')}
       </div>
       <p class="connection-meaning"><span>What it means</span>${insight.meaning}</p>
-      <div class="connection-action"><span>Recommended next move</span><p>${insight.action}</p></div>
-      <footer><span>Connected sources</span><div>${insight.sources.map((source) => `<small>${source}</small>`).join('')}</div></footer>
+      <div class="connection-action"><span>Suggested next step</span><p>${insight.action}</p></div>
+      <footer><span>Data used</span><div>${insight.sources.map((source) => `<small>${source}</small>`).join('')}</div></footer>
     </article>`).join('')}
   </div>
-  <p class="mock-caption">Mock decision examples for product demonstration. Production insights should retain source timestamps, attribution coverage, and the model logic behind each connection.</p>
+  <p class="mock-caption">These examples use mock data. A live version would show when each source was updated, how much of the audience was covered, and why the system made the connection.</p>
 </section>`;
 
 const renderArtist = (key) => {
@@ -411,9 +411,9 @@ const wirePageInteractions = () => {
 const requestedArtist = new URL(window.location.href).searchParams.get('artist');
 if (requestedArtist && artists[requestedArtist]) {
   qs('#portfolio-view').hidden = true; qs('#artist-view').hidden = false; renderTopbar(artists[requestedArtist]); renderArtist(requestedArtist);
-  document.title = `The Swamp — ${artists[requestedArtist].name}`;
+  document.title = `The Swamp: ${artists[requestedArtist].name}`;
 } else {
-  renderTopbar(null); renderPortfolio(); document.title = 'The Swamp — Artist portfolio';
+  renderTopbar(null); renderPortfolio(); document.title = 'The Swamp: Artist portfolio';
 }
 wirePageInteractions();
 
