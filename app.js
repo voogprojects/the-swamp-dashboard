@@ -198,6 +198,75 @@ const alertCard = (alert, index) => `<article class="alert-card alert-card--${al
   <div class="alert-recommendation"><span>Recommended strategy change</span><p>${alert.recommendation}</p></div>
 </article>`;
 
+const kenDecisionConnections = [
+  {
+    type: 'Content → streaming',
+    confidence: 'Medium confidence',
+    level: 'medium',
+    title: 'Recent long-form video was followed by a 3.1% spike in daily “OMG” streams',
+    meaning: 'The lift began within six hours of the YouTube premiere and was strongest among viewers who watched past the first minute. The timing suggests the story-led video helped convert interest into listening.',
+    evidence: [
+      ['YouTube premiere', '182K qualified views'],
+      ['Tracked song clicks', '+14.6% vs baseline'],
+      ['Spotify daily streams', '+3.1% in 36h']
+    ],
+    action: 'Lean into “OMG” with two short cutdowns from the long-form story, each ending on a direct listen prompt.',
+    sources: ['YouTube Analytics', 'Smart-link clicks', 'Spotify for Artists']
+  },
+  {
+    type: 'Creative → audience growth',
+    confidence: 'High confidence',
+    level: 'high',
+    title: 'Entrance edits are turning attention into new followers—not just views',
+    meaning: 'The walk-in format is outperforming KenTheMan’s normal content baseline and the lift carries through to profile visits and follows, especially in Houston and Atlanta.',
+    evidence: [
+      ['Matched posts', '3.5× view baseline'],
+      ['Profile visits', '+18% after exposure'],
+      ['TikTok followers', '+5.5% in 7d']
+    ],
+    action: 'Make the entrance reveal the opening beat of the next three posts and seed the format with Houston and Atlanta creators first.',
+    sources: ['TikTok Business', 'Content matching', 'Audience geography']
+  },
+  {
+    type: 'Cross-platform diagnosis',
+    confidence: 'High confidence',
+    level: 'high',
+    title: 'Instagram’s slowdown looks like a packaging issue, not song fatigue',
+    meaning: 'Reach is down, but saves and positive conversation remain above baseline while the same concept is still accelerating on TikTok. The creative idea is holding; the Reel opening is the likely weak point.',
+    evidence: [
+      ['Instagram reach', '−8% vs prior 7d'],
+      ['Instagram saves', '+11% vs baseline'],
+      ['Positive / neutral', '92% of comments']
+    ],
+    action: 'Keep the concept, recut the Reel to 12 seconds, and reveal the walk-in moment inside the first two seconds.',
+    sources: ['Instagram Insights', 'TikTok Business', 'Comment sentiment']
+  }
+];
+
+const renderDecisionConnections = () => `<section id="decisions" class="artist-section decision-connections" aria-labelledby="decisions-heading">
+  <div class="section-title-row decision-connections-heading">
+    <div><span class="page-label">Decision intelligence</span><h2 id="decisions-heading">What the data means—and what to do next</h2></div>
+    <p class="section-helper">Illustrative connections across content, audience, and streaming data. Directional signals, not proof of causation.</p>
+  </div>
+  <div class="decision-context" aria-label="Context used to prioritize these insights">
+    <span>Backend context applied</span>
+    <ul><li>Priority track: OMG</li><li>Focus markets: Houston + Atlanta</li><li>Decision window: next 72h</li></ul>
+  </div>
+  <div class="connection-grid">
+    ${kenDecisionConnections.map((insight) => `<article class="connection-card">
+      <header class="connection-card-header"><span>${insight.type}</span><em class="confidence confidence--${insight.level}"><i></i>${insight.confidence}</em></header>
+      <h3>${insight.title}</h3>
+      <div class="connection-evidence" aria-label="Connected evidence">
+        ${insight.evidence.map(([label, value], index) => `<div><span>${label}</span><strong>${value}</strong></div>${index < insight.evidence.length - 1 ? '<i aria-hidden="true">→</i>' : ''}`).join('')}
+      </div>
+      <p class="connection-meaning"><span>What it means</span>${insight.meaning}</p>
+      <div class="connection-action"><span>Recommended next move</span><p>${insight.action}</p></div>
+      <footer><span>Connected sources</span><div>${insight.sources.map((source) => `<small>${source}</small>`).join('')}</div></footer>
+    </article>`).join('')}
+  </div>
+  <p class="mock-caption">Mock decision examples for product demonstration. Production insights should retain source timestamps, attribution coverage, and the model logic behind each connection.</p>
+</section>`;
+
 const renderArtist = (key) => {
   const artist = artists[key]; activeArtist = key;
   const view = qs('#artist-view');
@@ -209,7 +278,7 @@ const renderArtist = (key) => {
       ${rangeControl('48', 'artist')}
     </section>
 
-    <nav class="artist-tabs" aria-label="Artist dashboard sections"><a class="is-active" href="#overview">Overview</a><a href="#social">Social</a><a href="#content">Content</a><a href="#audience">Audience</a><a href="#sentiment">Sentiment</a><a href="#alerts">Alerts <span>${artist.alerts.length}</span></a></nav>
+    <nav class="artist-tabs" aria-label="Artist dashboard sections"><a class="is-active" href="#overview">Overview</a>${key === 'kentheman' ? '<a href="#decisions">Decisions <span>3</span></a>' : ''}<a href="#social">Social</a><a href="#content">Content</a><a href="#audience">Audience</a><a href="#sentiment">Sentiment</a><a href="#alerts">Alerts <span>${artist.alerts.length}</span></a></nav>
 
     <section id="overview" class="artist-section artist-overview" aria-labelledby="overview-heading">
       <div class="section-title-row"><div><span class="page-label">Overview</span><h2 id="overview-heading">Performance snapshot</h2></div><span class="data-key"><i></i> Follower, listener, and stream totals supplied · other values illustrative</span></div>
@@ -226,6 +295,8 @@ const renderArtist = (key) => {
         <aside><span>Recommended strategy change</span><p>${artist.alert.recommendation}</p><small>Generated from recurrence, velocity, sentiment, and audience concentration.</small></aside>
       </div>
     </section>
+
+    ${key === 'kentheman' ? renderDecisionConnections() : ''}
 
     <section id="social" class="artist-section" aria-labelledby="social-heading">
       <div class="section-title-row"><div><span class="page-label">Social</span><h2 id="social-heading">Platform performance</h2></div><p class="section-helper">Followers, engagement, reach, and posting frequency compared with the prior seven days.</p></div>
@@ -283,6 +354,13 @@ const buildShareUrl = () => {
 };
 
 const wirePageInteractions = () => {
+  const setActiveArtistTab = (activeLink) => qsa('.artist-tabs a').forEach((link) => link.classList.toggle('is-active', link === activeLink));
+  qsa('.artist-tabs a').forEach((link) => link.addEventListener('click', () => setActiveArtistTab(link)));
+  const initialTab = qsa('.artist-tabs a').find((link) => link.getAttribute('href') === window.location.hash);
+  if (initialTab) {
+    setActiveArtistTab(initialTab);
+    window.requestAnimationFrame(() => document.getElementById(window.location.hash.slice(1))?.scrollIntoView());
+  }
   qsa('[data-range]').forEach((button) => button.addEventListener('click', () => {
     qsa(`[data-range][data-scope="${button.dataset.scope}"]`).forEach((item) => { item.classList.toggle('is-selected', item === button); item.setAttribute('aria-pressed', String(item === button)); });
     showToast('Reporting window updated', `Showing ${rangeLabels[button.dataset.range]}.`);
