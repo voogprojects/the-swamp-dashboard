@@ -9,7 +9,7 @@ const artists = {
   kentheman: {
     name: 'KenTheMan', genre: 'Hip hop', image: kenthemanImage, campaign: 'OMG · release momentum', track: 'OMG', initials: 'KM',
     exact: { listeners: '823,708', instagram: '666K', tiktok: '476K', usStreams: '610.7M', worldStreams: '662M' },
-    summary: { audience: '1.14M', socialGrowth: '+3.8%', engagement: '6.8%', listenerGrowth: '+6.2%', reach: '35.1M' },
+    summary: { audience: '1.14M', socialGrowth: '+3.8%', engagement: '6.8%', listenerGrowth: '+6.2%', reach: '58.6M' },
     histories: {
       audience: [890, 914, 938, 966, 990, 1015, 1041, 1069, 1090, 1115, 1134, 1142],
       engagement: [4.2, 4.6, 4.4, 5.0, 5.3, 5.1, 5.7, 6.0, 5.8, 6.3, 6.5, 6.8],
@@ -22,12 +22,19 @@ const artists = {
       { level: 'risk', label: 'Monitor', title: 'Instagram reach is flattening', detail: 'Reach is down while saves remain above baseline', recommendation: 'Keep the concept, but shorten the Reel opening to two seconds.', trigger: 'Reach −8% · saves +11%' }
     ],
     platforms: [
-      ['Instagram', 'I', '666K', '+1.1%', '5.9%', '12.8M', '7'], ['TikTok', 'T', '476K', '+5.5%', '8.7%', '18.6M', '11'],
+      ['Instagram', 'I', '666K', '+1.1%', '5.9%', '12.8M', '7'], ['TikTok', 'T', '476K', '+9.4%', '13.2%', '34.6M', '11'],
       ['YouTube', 'Y', '184K', '+2.2%', '6.1%', '6.4M', '4'], ['X', 'X', '142K', '+0.4%', '2.8%', '3.1M', '9'], ['Facebook', 'F', '219K', '+0.2%', '1.9%', '1.7M', '5']
     ],
-    formats: [['TikTok video', '6.2M', '8.7%', '+42%'], ['Instagram Reel', '3.4M', '5.9%', '+18%'], ['YouTube Short', '2.1M', '6.1%', '+27%'], ['Carousel', '814K', '4.2%', '−6%']],
+    platformInsight: {
+      title: 'TikTok is converting a smaller audience into significantly more traction',
+      detail: 'Despite having 29% fewer followers than Instagram, TikTok generated 2.7× the reach and 2.2× the engagement rate this week. The entrance-video trend is concentrating with ages 18–24 in Houston and Atlanta.',
+      metrics: [['TikTok engagement', '13.2%'], ['vs Instagram', '2.2× higher'], ['TikTok reach', '34.6M']],
+      action: 'Put two of the next three short-form drops—and the first Houston/Atlanta paid test—on TikTok. Recut the winner for Reels instead of building Instagram-first.',
+      sources: 'platform performance, content matching, and audience geography'
+    },
+    formats: [['TikTok video', '11.4M', '13.2%', '+86%'], ['Instagram Reel', '3.4M', '5.9%', '+18%'], ['YouTube Short', '2.1M', '6.1%', '+27%'], ['Carousel', '814K', '4.2%', '−6%']],
     posts: [
-      { platform: 'TikTok', format: 'Video', title: 'POV: the room was waiting', age: '18h', views: '8.9M', engagement: '11.4%', shares: '412K', saves: '286K', position: '53% 24%', tone: 'warm' },
+      { platform: 'TikTok', format: 'Video', title: 'POV: the room was waiting', age: '18h', views: '12.9M', engagement: '14.8%', shares: '612K', saves: '386K', position: '53% 24%', tone: 'warm' },
       { platform: 'Instagram', format: 'Reel', title: 'The entrance before the entrance', age: '1d', views: '4.2M', engagement: '7.8%', shares: '184K', saves: '221K', position: '46% 38%', tone: 'mono' },
       { platform: 'YouTube', format: 'Short', title: 'OMG live walk-in', age: '3d', views: '2.6M', engagement: '6.4%', shares: '78K', saves: '94K', position: '63% 30%', tone: 'cool' }
     ],
@@ -40,7 +47,7 @@ const artists = {
   straykids: {
     name: 'Stray Kids', genre: 'K-pop', image: strayKidsImage, campaign: 'THIS & THAT · release campaign', track: 'THIS & THAT', initials: 'SK',
     exact: { listeners: '10,940,227', instagram: '33.4M', tiktok: '37.6M', usStreams: '5.2B', worldStreams: '29.8B' },
-    summary: { audience: '71.0M', socialGrowth: '+2.9%', engagement: '8.4%', listenerGrowth: '+7.5%', reach: '482M' },
+    summary: { audience: '71.0M', socialGrowth: '+2.9%', engagement: '8.4%', listenerGrowth: '+7.5%', reach: '821M' },
     histories: {
       audience: [55.9, 57.2, 58.3, 59.9, 61.2, 62.8, 64.2, 65.7, 67.0, 68.4, 69.7, 71.0],
       engagement: [7.7, 8.2, 7.9, 8.8, 8.1, 8.5, 9.0, 8.4, 8.9, 8.1, 8.7, 8.4],
@@ -52,14 +59,21 @@ const artists = {
       { level: 'watch', label: 'Market shift', title: 'Mexico moved into the top-three growth markets', detail: 'Follower growth accelerated across TikTok and YouTube', recommendation: 'Add Spanish copy to the next fan prompt.', trigger: '+19% audience growth in 7d' }
     ],
     platforms: [
-      ['Instagram', 'I', '33.4M', '+1.8%', '7.1%', '164M', '9'], ['TikTok', 'T', '37.6M', '+3.9%', '10.8%', '286M', '15'],
+      ['Instagram', 'I', '33.4M', '+4.8%', '12.3%', '312M', '9'], ['TikTok', 'T', '37.6M', '+2.6%', '8.0%', '218M', '15'],
       ['YouTube', 'Y', '21.2M', '+2.4%', '8.3%', '198M', '8'], ['X', 'X', '11.1M', '+1.1%', '4.6%', '82M', '18'], ['Facebook', 'F', '6.7M', '+0.6%', '3.2%', '31M', '6']
     ],
-    formats: [['TikTok video', '48.6M', '10.8%', '+61%'], ['YouTube Short', '29.1M', '8.3%', '+34%'], ['Instagram Reel', '23.7M', '7.1%', '+28%'], ['Carousel', '8.2M', '5.7%', '+9%']],
+    platformInsight: {
+      title: 'Instagram Reels are delivering more value per post than TikTok',
+      detail: 'Reels produced a 54% higher engagement rate and 2.4× more reach per post, even with a smaller follower base. Visual reveal posts are also earning the strongest save rate in Mexico and Indonesia.',
+      metrics: [['Instagram engagement', '12.3%'], ['vs TikTok', '54% higher'], ['Reach per Reel', '34.7M']],
+      action: 'Lead the next visual reveal on Instagram, then use TikTok for the editable fan-participation version. Localize both captions for Mexico and Indonesia.',
+      sources: 'platform performance, post efficiency, and market-level saves'
+    },
+    formats: [['Instagram Reel', '46.2M', '12.3%', '+58%'], ['TikTok video', '36.4M', '8.0%', '+24%'], ['YouTube Short', '29.1M', '8.3%', '+34%'], ['Carousel', '8.2M', '5.7%', '+9%']],
     posts: [
-      { platform: 'TikTok', format: 'Video', title: 'This side & that side', age: '9h', views: '61.8M', engagement: '12.6%', shares: '3.8M', saves: '2.1M', position: '50% 40%', tone: 'cool' },
-      { platform: 'YouTube', format: 'Short', title: 'One sound, two moods', age: '1d', views: '34.2M', engagement: '9.2%', shares: '1.4M', saves: '982K', position: '42% 54%', tone: 'mono' },
-      { platform: 'Instagram', format: 'Reel', title: 'Why choose one?', age: '2d', views: '27.9M', engagement: '8.8%', shares: '1.1M', saves: '846K', position: '58% 45%', tone: 'warm' }
+      { platform: 'Instagram', format: 'Reel', title: 'Why choose one?', age: '9h', views: '72.4M', engagement: '15.1%', shares: '2.8M', saves: '1.9M', position: '58% 45%', tone: 'warm' },
+      { platform: 'TikTok', format: 'Video', title: 'This side & that side', age: '1d', views: '61.8M', engagement: '9.4%', shares: '3.8M', saves: '2.1M', position: '50% 40%', tone: 'cool' },
+      { platform: 'YouTube', format: 'Short', title: 'One sound, two moods', age: '2d', views: '34.2M', engagement: '9.2%', shares: '1.4M', saves: '982K', position: '42% 54%', tone: 'mono' }
     ],
     audience: { countries: [['Indonesia', '14%', 100], ['United States', '12%', 86], ['Mexico', '10%', 71], ['Japan', '9%', 64]], cities: 'Jakarta · Mexico City · Los Angeles · Tokyo', ages: [['18–24', '42%', 100], ['13–17', '29%', 69], ['25–34', '21%', 50], ['35–44', '5%', 12]], gender: '74% women · 23% men · 3% self-described', returning: '71% returning · 29% new' },
     overlap: [['Mergui', '9%', 'International pop + ages 18–24'], ['KenTheMan', '12%', 'High-engagement short-form viewers']],
@@ -70,7 +84,7 @@ const artists = {
   mergui: {
     name: 'Mergui', genre: 'Pop / singer-songwriter', image: merguiImage, campaign: 'Alien · growth campaign', track: 'Alien', initials: 'M',
     exact: { listeners: '426,924', instagram: '436K', tiktok: '336K', usStreams: '32.5M', worldStreams: '244.7M' },
-    summary: { audience: '772K', socialGrowth: '+1.7%', engagement: '4.9%', listenerGrowth: '+3.0%', reach: '11.8M' },
+    summary: { audience: '772K', socialGrowth: '+1.7%', engagement: '4.9%', listenerGrowth: '+3.0%', reach: '19.9M' },
     histories: {
       audience: [620, 635, 654, 672, 687, 704, 718, 735, 748, 757, 766, 772],
       engagement: [3.8, 4.1, 4.5, 4.0, 4.7, 5.2, 4.8, 5.4, 5.1, 4.7, 5.0, 4.9],
@@ -82,10 +96,17 @@ const artists = {
       { level: 'risk', label: 'Sentiment watch', title: 'Negative comments rose on paid placements', detail: 'Organic sentiment remains stable; paid reach is the outlier', recommendation: 'Pause the broadest audience set and keep organic discovery live.', trigger: 'Negative sentiment +5 pts' }
     ],
     platforms: [
-      ['Instagram', 'I', '436K', '+1.3%', '5.6%', '6.4M', '6'], ['TikTok', 'T', '336K', '+2.2%', '5.1%', '4.8M', '8'],
+      ['Instagram', 'I', '436K', '+4.6%', '9.4%', '12.8M', '6'], ['TikTok', 'T', '336K', '+1.2%', '4.7%', '4.1M', '8'],
       ['YouTube', 'Y', '97K', '+1.1%', '4.4%', '1.9M', '3'], ['X', 'X', '58K', '+0.2%', '2.1%', '640K', '5'], ['Facebook', 'F', '122K', '−0.1%', '1.6%', '410K', '3']
     ],
-    formats: [['Instagram Reel', '1.8M', '5.6%', '+33%'], ['TikTok video', '1.2M', '5.1%', '+12%'], ['YouTube Short', '684K', '4.4%', '+8%'], ['Static post', '216K', '3.0%', '−14%']],
+    platformInsight: {
+      title: 'Instagram is the clearest discovery engine for “Alien” right now',
+      detail: 'Reels delivered 2.0× TikTok’s engagement rate and 3.1× its total reach with fewer posts. The strongest saves are coming from intimate relocation stories, not polished performance clips.',
+      metrics: [['Instagram engagement', '9.4%'], ['vs TikTok', '2.0× higher'], ['Instagram reach', '12.8M']],
+      action: 'Lead the next “Alien” story on Reels and keep the personal first-day-in-a-new-city framing. Use TikTok for cutdowns after the Instagram concept proves out.',
+      sources: 'platform performance, format saves, and conversation themes'
+    },
+    formats: [['Instagram Reel', '3.8M', '9.4%', '+71%'], ['TikTok video', '1.0M', '4.7%', '−4%'], ['YouTube Short', '684K', '4.4%', '+8%'], ['Static post', '216K', '3.0%', '−14%']],
     posts: [
       { platform: 'Instagram', format: 'Reel', title: 'First night in a new city', age: '14h', views: '2.4M', engagement: '7.1%', shares: '92K', saves: '148K', position: '50% 30%', tone: 'mono' },
       { platform: 'TikTok', format: 'Video', title: 'For everyone still finding home', age: '2d', views: '1.6M', engagement: '5.8%', shares: '61K', saves: '104K', position: '45% 45%', tone: 'cool' },
@@ -182,6 +203,19 @@ const platformTable = (artist) => `<div class="platform-table" role="table" aria
   <div class="platform-row platform-row--head" role="row"><span role="columnheader">Platform</span><span role="columnheader">Followers</span><span role="columnheader">Δ prior 7d</span><span role="columnheader">Engagement</span><span role="columnheader">Reach / views</span><span role="columnheader">Posts</span></div>
   ${artist.platforms.map(([name, icon, audience, change, engagement, reach, posts]) => `<div class="platform-row" role="row"><span role="cell"><i class="platform-mark platform-mark--${name.toLowerCase()}">${icon}</i><strong>${name}</strong></span><span role="cell">${audience}</span><span role="cell" class="${change.includes('−') ? 'metric-down' : 'metric-up'}">${change}</span><span role="cell">${engagement}</span><span role="cell">${reach}</span><span role="cell">${posts}</span></div>`).join('')}
 </div>`;
+
+const platformAIInsight = (artist) => {
+  const insightId = `platform-insight-${artist.initials.toLowerCase()}`;
+  return `<aside class="platform-ai-insight" aria-labelledby="${insightId}">
+    <div class="platform-ai-copy">
+      <header><span class="platform-ai-mark" aria-hidden="true">✦</span><div><span>AI-powered insight</span><small>Illustrative synthesis</small></div><em><i></i>High confidence</em></header>
+      <h3 id="${insightId}">${artist.platformInsight.title}</h3>
+      <p>${artist.platformInsight.detail}</p>
+      <div class="platform-ai-metrics" aria-label="Evidence behind this insight">${artist.platformInsight.metrics.map(([label, value]) => `<div><span>${label}</span><strong>${value}</strong></div>`).join('')}</div>
+    </div>
+    <div class="platform-ai-action"><span>Recommended move</span><p>${artist.platformInsight.action}</p><small>Connected from ${artist.platformInsight.sources}.</small></div>
+  </aside>`;
+};
 
 const topPost = (artist, post, index) => `<article class="post-card">
   <div class="post-visual post-visual--${post.tone}"><img src="${artist.image}" alt="Mock ${post.format} thumbnail for ${artist.name}" style="object-position:${post.position}"/><div class="post-visual-top"><span>${post.platform}</span><small>${post.age}</small></div><div class="post-play" aria-hidden="true">▶</div><div class="post-visual-bottom"><span>${post.format}</span><strong>${post.title}</strong></div></div>
@@ -301,6 +335,7 @@ const renderArtist = (key) => {
     <section id="social" class="artist-section" aria-labelledby="social-heading">
       <div class="section-title-row"><div><span class="page-label">Social</span><h2 id="social-heading">Platform performance</h2></div><p class="section-helper">Followers, engagement, reach, and posting frequency compared with the prior seven days.</p></div>
       ${platformTable(artist)}
+      ${platformAIInsight(artist)}
       <p class="mock-caption">Instagram and TikTok follower totals are supplied. YouTube, X, Facebook, engagement, reach, and posting metrics are presentation mock data.</p>
       <div class="streaming-strip"><div><i class="platform-mark platform-mark--spotify">S</i><span><small>Streaming performance</small><strong>Spotify for Artists</strong></span></div><dl><div><dt>Monthly listeners</dt><dd>${artist.exact.listeners}</dd></div><div><dt>US streams ATD</dt><dd>${artist.exact.usStreams}</dd></div><div><dt>Worldwide streams ATD</dt><dd>${artist.exact.worldStreams}</dd></div><div><dt>Save rate</dt><dd>${key === 'straykids' ? '12.8%' : key === 'mergui' ? '8.1%' : '10.4%'}</dd></div></dl></div>
     </section>
