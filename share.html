@@ -20,7 +20,7 @@
     <main class="share-sheet" id="shared-brief">
       <div class="share-sheet-masthead">
         <div class="share-artist"><img id="share-artist-image" src="assets/artists/kentheman.jpg" alt="" /><div><span>48-hour artist report</span><strong id="share-artist-name">KenTheMan · OMG</strong></div></div>
-        <span>Shared by Campaign Marketing<br />September 8, 2026</span>
+        <span>Shared by Campaign Marketing<br /><span id="share-generated-date">September 16, 2026</span></span>
       </div>
       <div class="share-sheet-body">
         <p class="brief-overline">Performance signal</p>
@@ -32,6 +32,44 @@
           <div><span>Baseline lift</span><strong id="public-lift">3.5×</strong></div>
           <div><span>Sentiment</span><strong id="public-sentiment">92%</strong></div>
           <div><span>Audience</span><strong id="public-audience">Houston + Atlanta · 18–24</strong></div>
+        </section>
+
+        <section class="share-overview" aria-labelledby="overview-title">
+          <div class="share-section-heading">
+            <div><span>Performance overview</span><h2 id="overview-title">The campaign at a glance</h2></div>
+            <p id="overview-period">Illustrative performance for the last 48 hours</p>
+          </div>
+          <div class="share-kpi-grid" id="share-kpis"></div>
+          <div class="share-momentum">
+            <div class="share-trend-copy"><span>Audience momentum</span><strong id="share-trend-value">+3.8%</strong><p id="share-trend-note">Social audience growth remains above the prior period.</p></div>
+            <div class="share-chart" id="share-chart" aria-label="Twelve-period audience growth trend"></div>
+          </div>
+        </section>
+
+        <section class="share-report-grid" aria-label="Audience and platform summary">
+          <article class="share-report-panel">
+            <div class="share-panel-head"><span>Audience</span><h2>Who is responding</h2></div>
+            <div class="share-audience-lead"><strong id="share-audience-age">18–24</strong><span>leading age group</span></div>
+            <div class="share-bars" id="share-age-bars"></div>
+            <p class="share-panel-note" id="share-audience-note"></p>
+          </article>
+          <article class="share-report-panel">
+            <div class="share-panel-head"><span>Channels</span><h2>Where momentum lives</h2></div>
+            <div class="share-platform-list" id="share-platforms"></div>
+          </article>
+        </section>
+
+        <section class="share-content" aria-labelledby="content-title">
+          <div class="share-section-heading">
+            <div><span>Content performance</span><h2 id="content-title">What is connecting</h2></div>
+            <p>Top public-facing posts in this mock reporting period</p>
+          </div>
+          <div class="share-post-list" id="share-posts"></div>
+        </section>
+
+        <section class="share-conversation" aria-labelledby="conversation-title">
+          <div class="share-conversation-score"><span>Conversation health</span><strong id="share-positive-score">92%</strong><small>positive or neutral</small></div>
+          <div><span>Leading themes</span><h2 id="conversation-title">What fans are saying</h2><div class="share-theme-list" id="share-themes"></div></div>
         </section>
 
         <section class="share-recommendation" aria-labelledby="public-move">
